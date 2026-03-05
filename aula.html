@@ -1,0 +1,2243 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Completo - Guia de Referência</title>
+    <style>
+        :root {
+            --primary: #2f9e41;
+            --secondary: #e74c3c;
+            --accent: #01b901;
+            --dark: #2c3e50;
+            --success: #2ecc71;
+            --warning: #f39c12;
+            --info: #17a2b8;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .nav-tabs {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 20px 0;
+            gap: 8px;
+        }
+        
+        .nav-tab {
+            padding: 12px 24px;
+            background-color: var(--light);
+            color: var(--dark);
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            border: 2px solid transparent;
+        }
+        
+        .nav-tab:hover {
+            background-color: var(--accent);
+            color: white;
+        }
+        
+        .nav-tab.active {
+            background-color: var(--secondary);
+            color: white;
+        }
+        
+        .content-section {
+            display: none;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            margin-bottom: 30px;
+        }
+        
+        .content-section.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        h2 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--accent);
+        }
+        
+        h3 {
+            color: var(--secondary);
+            margin: 20px 0 10px;
+        }
+        
+        h4 {
+            color: var(--primary);
+            margin: 15px 0 10px;
+        }
+        
+        p {
+            margin-bottom: 15px;
+        }
+        
+        ul, ol {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        .code-example {
+            background-color: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            cursor: pointer;
+        }
+        
+        .tag {
+            color: #f92672;
+        }
+        
+        .attribute {
+            color: #a6e22e;
+        }
+        
+        .value {
+            color: #fd971f;
+        }
+        
+        .comment {
+            color: #75715e;
+        }
+        
+        .example-box {
+            background-color: var(--light);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid var(--accent);
+        }
+        
+        .example-output {
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 10px;
+            background: white;
+        }
+        
+        .table-container {
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        th {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+        
+        .important {
+            background-color: #fff8e1;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #ffc107;
+            margin: 15px 0;
+        }
+        
+        .note {
+            background-color: #e8f4fd;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid var(--info);
+            margin: 15px 0;
+        }
+        
+        .exercise {
+            background-color: #e7f7ed;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid var(--success);
+            margin: 15px 0;
+        }
+        
+        .reference-card {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        
+        .reference-card h4 {
+            margin-top: 0;
+            color: var(--primary);
+        }
+        
+        .reference-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .reference-link:hover {
+            text-decoration: underline;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 15px 15px 0 0;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-tabs {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .nav-tab {
+                width: 80%;
+                margin-bottom: 10px;
+                text-align: center;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>HTML Completo - Guia de Referência</h1>
+            <p class="subtitle">Material completo baseado na W3Schools para a disciplina de Desenvolvimento de Sistemas Web I</p>
+            <p class="subtitle">Prof. Mário Melo</p>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="nav-tabs">
+            <div class="nav-tab active" data-target="intro">Introdução</div>
+            <div class="nav-tab" data-target="editors">Editores HTML</div>
+            <div class="nav-tab" data-target="basic">Elementos Básicos</div>
+            <div class="nav-tab" data-target="attributes">Atributos</div>
+            <div class="nav-tab" data-target="formatting">Formatação</div>
+            <div class="nav-tab" data-target="semantic">Semântica</div>
+            <div class="nav-tab" data-target="lists">Listas</div>
+            <div class="nav-tab" data-target="tables">Tabelas</div>
+            <div class="nav-tab" data-target="forms">Formulários</div>
+            <div class="nav-tab" data-target="multimedia">Multimídia</div>
+            <div class="nav-tab" data-target="graphics">Gráficos</div>
+            <div class="nav-tab" data-target="apis">APIs HTML</div>
+            <div class="nav-tab" data-target="references">Referências</div>
+            <div class="nav-tab" data-target="exercises">Exercícios</div>
+        </div>
+        
+        <div class="content-section active" id="intro">
+            <h2>Introdução ao HTML</h2>
+            <p>HTML (HyperText Markup Language) é a linguagem de marcação padrão para criar páginas web. Descreve a estrutura de uma página web e consiste em uma série de elementos.</p>
+            
+            <h3>O que é um elemento HTML?</h3>
+            <p>Um elemento HTML é definido por uma tag de início, algum conteúdo e uma tag de fim:</p>
+            
+            <div class="code-example">
+                <span class="tag">&lt;nomedatag&gt;</span>Conteúdo vem aqui...<span class="tag">&lt;/nomedatag&gt;</span>
+            </div>
+            
+            <div class="important">
+                <p><strong>Importante:</strong> HTML não é uma linguagem de programação, é uma linguagem de marcação que define a estrutura do seu conteúdo.</p>
+            </div>
+            
+            <h3>Estrutura Básica de um Documento HTML</h3>
+            <div class="code-example">
+                <span class="tag">&lt;!DOCTYPE html&gt;</span><br>
+                <span class="tag">&lt;html&gt;</span><br>
+                <span class="tag">&lt;head&gt;</span><br>
+                &nbsp;&nbsp;<span class="tag">&lt;title&gt;</span>Título da Página<span class="tag">&lt;/title&gt;</span><br>
+                <span class="tag">&lt;/head&gt;</span><br>
+                <span class="tag">&lt;body&gt;</span><br>
+                <br>
+                &nbsp;&nbsp;<span class="tag">&lt;h1&gt;</span>Meu Primeiro Cabeçalho<span class="tag">&lt;/h1&gt;</span><br>
+                &nbsp;&nbsp;<span class="tag">&lt;p&gt;</span>Meu primeiro parágrafo.<span class="tag">&lt;/p&gt;</span><br>
+                <br>
+                <span class="tag">&lt;/body&gt;</span><br>
+                <span class="tag">&lt;/html&gt;</span>
+            </div>
+            
+            <h3>História do HTML</h3>
+            <p>HTML foi criado por Tim Berners-Lee em 1991. A primeira versão pública foi HTML 2.0, publicada em 1995. O HTML 4.01 foi uma versão importante publicada em 1999. A versão atual é o HTML5, publicado como recomendação oficial do W3C em outubro de 2014.</p>
+            
+            <h3>Versões do HTML</h3>
+            <div class="table-container">
+                <table>
+                    <tr>
+                        <th>Versão</th>
+                        <th>Ano</th>
+                        <th>Características Principais</th>
+                    </tr>
+                    <tr>
+                        <td>HTML 1.0</td>
+                        <td>1993</td>
+                        <td>Versão inicial com elementos básicos</td>
+                    </tr>
+                    <tr>
+                        <td>HTML 2.0</td>
+                        <td>1995</td>
+                        <td>Primeira versão padronizada oficialmente</td>
+                    </tr>
+                    <tr>
+                        <td>HTML 3.2</td>
+                        <td>1997</td>
+                        <td>Suporte a tabelas, applets e texto ao redor de imagens</td>
+                    </tr>
+                    <tr>
+                        <td>HTML 4.01</td>
+                        <td>1999</td>
+                        <td>Separação entre estrutura e apresentação (CSS)</td>
+                    </tr>
+                    <tr>
+                        <td>XHTML</td>
+                        <td>2000</td>
+                        <td>HTML reformulado como aplicação XML</td>
+                    </tr>
+                    <tr>
+                        <td>HTML5</td>
+                        <td>2014</td>
+                        <td>Elementos semânticos, APIs, multimídia nativa</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <h3>Navegadores Web</h3>
+            <p>Os navegadores web (Chrome, Edge, Firefox, Safari) leem documentos HTML e os exibem corretamente. O trabalho do navegador é transformar tags HTML em elementos visuais na tela.</p>
+        </div>
+        
+        <div class="content-section" id="editors">
+            <h2>Editores HTML</h2>
+            <p>Para criar e editar documentos HTML, você pode usar um editor de texto simples, mas editores especializados oferecem recursos avançados que facilitam o desenvolvimento.</p>
+            
+            <h3>Editores de Texto Simples</h3>
+            <ul>
+                <li><strong>Bloco de Notas (Windows)</strong> - Editor básico incluído no Windows</li>
+                <li><strong>TextEdit (Mac)</strong> - Editor básico do macOS</li>
+                <li><strong>Gedit (Linux)</strong> - Editor simples para ambientes GNOME</li>
+                <li><strong>Notepad++ (Windows)</strong> - Editor com recursos avançados</li>
+            </ul>
+            
+            <h3>Editores de Código Especializados</h3>
+            <ul>
+                <li><strong>Visual Studio Code</strong> - Editor gratuito da Microsoft com extensões</li>
+                <li><strong>Sublime Text</strong> - Editor rápido e personalizável</li>
+                <li><strong>Atom</strong> - Editor hackeável do GitHub</li>
+                <li><strong>Brackets</strong> - Editor da Adobe focado em desenvolvimento web</li>
+            </ul>
+            
+            <h3>IDEs (Ambientes de Desenvolvimento Integrado)</h3>
+            <ul>
+                <li><strong>WebStorm</strong> - IDE poderosa para JavaScript e tecnologias web</li>
+                <li><strong>Adobe Dreamweaver</strong> - Editor WYSIWYG com suporte a código</li>
+                <li><strong>Eclipse</strong> - IDE open source com plugins para desenvolvimento web</li>
+            </ul>
+            
+            <div class="note">
+                <p><strong>Dica:</strong> Para iniciantes, recomendamos o Visual Studio Code por ser gratuito, ter uma grande comunidade e muitas extensões úteis para desenvolvimento HTML.</p>
+            </div>
+            
+            <h3>Extensões Úteis para VS Code</h3>
+            <ul>
+                <li>Live Server - Para visualizar alterações em tempo real</li>
+                <li>HTML CSS Support - Autocompletar para HTML e CSS</li>
+                <li>Auto Rename Tag - Renomeia automaticamente tags pareadas</li>
+                <li>Prettier - Formatador de código</li>
+                <li>Color Highlight - Destaca cores no código</li>
+            </ul>
+        </div>
+        
+        <div class="content-section" id="basic">
+            <h2>Elementos HTML Básicos</h2>
+            <p>Os elementos HTML são os blocos de construção de uma página web. Abaixo estão alguns dos elementos mais importantes:</p>
+            
+            <h3>Cabeçalhos</h3>
+            <p>HTML possui seis níveis de cabeçalhos, de &lt;h1&gt; (mais importante) a &lt;h6&gt; (menos importante):</p>
+            
+            <div class="example-box">
+                <h4>Exemplo:</h4>
+                <div class="code-example">
+                    <span class="tag">&lt;h1&gt;</span>Cabeçalho 1<span class="tag">&lt;/h1&gt;</span><br>
+                    <span class="tag">&lt;h2&gt;</span>Cabeçalho 2<span class="tag">&lt;/h2&gt;</span><br>
+                    <span class="tag">&lt;h3&gt;</span>Cabeçalho 3<span class="tag">&lt;/h3&gt;</span><br>
+                    <span class="tag">&lt;h4&gt;</span>Cabeçalho 4<span class="tag">&lt;/h4&gt;</span><br>
+                    <span class="tag">&lt;h5&gt;</span>Cabeçalho 5<span class="tag">&lt;/h5&gt;</span><br>
+                    <span class="tag">&lt;h6&gt;</span>Cabeçalho 6<span class="tag">&lt;/h6&gt;</span>
+                </div>
+                
+                <div class="example-output">
+                    <h1 style="margin: 5px 0;">Cabeçalho 1</h1>
+                    <h2 style="margin: 5px 0;">Cabeçalho 2</h2>
+                    <h3 style="margin: 5px 0;">Cabeçalho 3</h3>
+                    <h4 style="margin: 5px 0;">Cabeçalho 4</h4>
+                    <h5 style="margin: 5px 0;">Cabeçalho 5</h5>
+                    <h6 style="margin: 5px 0;">Cabeçalho 6</h6>
+                </div>
+            </div>
+            
+            <h3>Parágrafos</h3>
+            <p>O elemento &lt;p&gt; define um parágrafo:</p>
+            
+            <div class="code-example">
+                <span class="tag">&lt;p&gt;</span>Isto é um parágrafo.<span class="tag">&lt;/p&gt;</span><br>
+                <span class="tag">&lt;p&gt;</span>Isto é outro parágrafo.<span class="tag">&lt;/p&gt;</span>
+            </div>
+            
+            <h3>Links</h3>
+            <p>O elemento &lt;a&gt; define um hyperlink. O atributo mais importante é o href, que indica o destino do link:</p>
+            
+            <div class="code-example">
+                <span class="tag">&lt;a</span> <span class="attribute">href</span>=<span class="value">"https://www.mariogmelo.com.br"</span><span class="tag">&gt;</span>Isto é um link<span class="tag">&lt;/a&gt;</span>
+            </div>
+            
+            <h3>Imagens</h3>
+            <p>O elemento &lt;img&gt; define uma imagem. É uma tag vazia (sem tag de fechamento) que contém apenas atributos:</p>
+            
+            <div class="code-example">
+                <span class="tag">&lt;img</span> <span class="attribute">src</span>=<span class="value">"imagem.jpg"</span> <span class="attribute">alt</span>=<span class="value">"Texto alternativo"</span> <span class="attribute">width</span>=<span class="value">"104"</span> <span class="attribute">height</span>=<span class="value">"142"</span><span class="tag">&gt;</span>
+            </div>
+            
+            <div class="important">
+                <p><strong>Importante:</strong> Sempre use o atributo <code>alt</code> em imagens para acessibilidade e SEO.</p>
+            </div>
+            
+            <h3>Elementos de Quebra de Linha e Linha Horizontal</h3>
+            <p>O elemento &lt;br&gt; insere uma quebra de linha, e &lt;hr&gt; cria uma linha horizontal:</p>
+            
+            <div class="code-example">
+                <span class="tag">&lt;p&gt;</span>Isto é um parágrafo<br>com uma quebra de linha.<span class="tag">&lt;/p&gt;</span><br>
+                <span class="tag">&lt;hr&gt;</span><br>
+                <span class="tag">&lt;p&gt;</span>Este é outro parágrafo após uma linha horizontal.<span class="tag">&lt;/p&gt;</span>
+            </div>
+            
+            <h3>Elementos de Formatação de Texto</h3>
+            <p>HTML oferece diversos elementos para formatação de texto:</p>
+            
+            <div class="code-example">
+                <span class="tag">&lt;b&gt;</span> - Texto em negrito<br>
+                <span class="tag">&lt;strong&gt;</span> - Texto importante<br>
+                <span class="tag">&lt;i&gt;</span> - Texto em itálico<br>
+                <span class="tag">&lt;em&gt;</span> - Texto enfatizado<br>
+                <span class="tag">&lt;mark&gt;</span> - Texto marcado<br>
+                <span class="tag">&lt;small&gt;</span> - Texto pequeno<br>
+                <span class="tag">&lt;del&gt;</span> - Texto deletado<br>
+                <span class="tag">&lt;ins&gt;</span> - Texto inserido<br>
+                <span class="tag">&lt;sub&gt;</span> - Texto subscrito<br>
+                <span class="tag">&lt;sup&gt;</span> - Texto sobrescrito
+            </div>
+            
+            <h3>Listas</h3>
+            <p>HTML suporta listas ordenadas (numeradas) e não ordenadas (com marcadores):</p>
+            
+            <div class="code-example">
+                <span class="comment">&lt;!-- Lista não ordenada --&gt;</span><br>
+                <span class="tag">&lt;ul&gt;</span><br>
+                &nbsp;&nbsp;<span class="tag">&lt;li&gt;</span>Café<span class="tag">&lt;/li&gt;</span><br>
+                &nbsp;&nbsp;<span class="tag">&lt;li&gt;</span>Chá<span class="tag">&lt;/li&gt;</span><br>
+                &nbsp;&nbsp;<span class="tag">&lt;li&gt;</span>Leite<span class="tag">&lt;/li&gt;</span><br>
+                <span class="tag">&lt;/ul&gt;</span><br>
+                <br>
+                <span class="comment">&lt;!-- Lista ordenada --&gt;</span><br>
+                <span class="tag">&lt;ol&gt;</span><br>
+                &nbsp;&nbsp;<span class="tag">&lt;li&gt;</span>Café<span class="tag">&lt;/li&gt;</span><br>
+                &nbsp;&nbsp;<span class="tag">&lt;li&gt;</span>Chá<span class="tag">&lt;/li&gt;</span><br>
+                &nbsp;&nbsp;<span class="tag">&lt;li&gt;</span>Leite<span class="tag">&lt;/li&gt;</span><br>
+                <span class="tag">&lt;/ol&gt;</span>
+            </div>
+            
+            <h3>Divisões e Seções</h3>
+            <p>O elemento &lt;div&gt; é um contêiner genérico usado para agrupar elementos e aplicar estilos:</p>
+            
+            <div class="code-example">
+                <span class="tag">&lt;div</span> <span class="attribute">class</span>=<span class="value">"container"</span><span class="tag">&gt;</span><br>
+                &nbsp;&nbsp;<span class="tag">&lt;h2&gt;</span>Título da Seção<span class="tag">&lt;/h2&gt;</span><br>
+                &nbsp;&nbsp;<span class="tag">&lt;p&gt;</span>Texto da seção...<span class="tag">&lt;/p&gt;</span><br>
+                <span class="tag">&lt;/div&gt;</span>
+            </div>
+        </div>
+        
+        <div class="content-section" id="attributes">
+            <h2>Atributos HTML</h2>
+            <p>Atributos fornecem informações adicionais sobre elementos HTML. Eles são sempre especificados na tag inicial e geralmente vêm em pares nome/valor como: name="value".</p>
+            
+            <h3>Atributos Comuns</h3>
+            <div class="table-container">
+                <table>
+                    <tr>
+                        <th>Atributo</th>
+                        <th>Descrição</th>
+                        <th>Exemplo</th>
+                    </tr>
+                    <tr>
+                        <td>id</td>
+                        <td>Especifica um id único para um elemento</td>
+                        <td>&lt;div id="header"&gt;</td>
+                    </tr>
+                    <tr>
+                        <td>class</td>
+                        <td>Especifica uma ou mais classes para um elemento</td>
+                        <td>&lt;p class="texto-destaque"&gt;</td>
+                    </tr>
+                    <tr>
+                        <td>style</td>
+                        <td>Especifica estilos CSS inline</td>
+                        <td>&lt;h1 style="color:blue;"&gt;</td>
+                    </tr>
+                    <tr>
+                        <td>src</td>
+                        <td>Especifica a URL para imagens</td>
+                        <td>&lt;img src="imagem.jpg"&gt;</td>
+                    </tr>
+                    <tr>
+                        <td>href</td>
+                        <td>Especifica a URL para links</td>
+                        <td>&lt;a href="pagina.html"&gt;</td>
+                    </tr>
+                    <tr>
+                        <td>alt</td>
+                        <td>Texto alternativo para imagens</td>
+                        <td>&lt;img src="img.jpg" alt="Minha imagem"&gt;</td>
+                    </tr>
+                    <tr>
+                        <td>title</td>
+                        <td>Informações extras sobre um elemento (tooltip)</td>
+                        <td>&lt;p title="I'm a tooltip"&gt;Texto&lt;/p&gt;</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <h3>Atributos Globais</h3>
+            <p>Estes atributos podem ser usados em qualquer elemento HTML:</p>
+            
+            <div class="table-container">
+                <table>
+                    <tr>
+                        <th>Atributo</th>
+                        <th>Descrição</th>
+                        <th>Exemplo</th>
+                    </tr>
+                    <tr>
+                        <td>id</td>
+                        <td>Especifica um id único para um elemento</td>
+                        <td>&lt;div id="header"&gt;</td>
+                    </tr>
+                    <tr>
+                        <td>class</td>
+                        <td>Especifica uma ou mais classes para um elemento</td>
+                        <td>&lt;p class="texto-destaque"&gt;</td>
+                    </tr>
+                    <tr>
+                        <td>style</td>
+                        <td>Especifica estilos CSS inline</td>
+                        <td>&lt;h1 style="color:blue;"&gt;</td>
+                    </tr>
+                    <tr>
+                        <td>title</td>
+                        <td>Informações adicionais (mostradas como tooltip)</td>
+                        <td>&lt;p title="I'm a tooltip"&gt;</td>
+                    </tr>
+                    <tr>
+                        <td>lang</td>
+                        <td>Define o idioma do conteúdo do elemento</td>
+                        <td>&lt;html lang="pt-BR"&gt;</td>
+                    </tr>
+                    <tr>
+                        <td>data-*</td>
+                        <td>Usado para armazenar dados personalizados</td>
+                        <td>&lt;div data-id="123"&gt;</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <h3>Atributos Booleanos</h3>
+            <p>Alguns atributos não precisam de um valor, são chamados de atributos booleanos. Sua presença no elemento indica valor verdadeiro:</p>
+            
+            <div class="code-example">
+                <span class="tag">&lt;input</span> <span class="attribute">type</span>=<span class="value">"text"</span> <span class="attribute">disabled</span><span class="tag">&gt;</span><br>
+                <span class="tag">&lt;input</span> <span class="attribute">type</span>=<span class="value">"checkbox"</span> <span class="attribute">checked</span><span class="tag">&gt;</span><br>
+                <span class="tag">&lt;input</span> <span class="attribute">type</span>=<span class="value">"text"</span> <span class="attribute">readonly</span><span class="tag">&gt;</span><br>
+                <span class="tag">&lt;video</span> <span class="attribute">controls</span><span class="tag">&gt;</span><span class="tag">&lt;/video&gt;</span>
+            </div>
+            
+            <div class="note">
+                <p><strong>Nota:</strong> Em HTML5, atributos booleanos podem ser escritos sem valor (apenas o nome) ou com o nome como valor (name="name"). Ambas as formas são válidas.</p>
+            </div>
+            
+            <h3>Atributos Globais (completos)</h3>
+            <p>Alguns atributos podem ser usados em qualquer elemento HTML:</p>
+            <ul>
+                <li><strong>accesskey</strong> - Especifica uma tecla de atalho para ativar/focar um elemento</li>
+                <li><strong>contenteditable</strong> - Especifica se o conteúdo do elemento é editável ou não</li>
+                <li><strong>data-*</strong> - Usado para armazenar dados personalizados privados para a página</li>
+                <li><strong>dir</strong> - Especifica a direção do texto para o conteúdo de um elemento</li>
+                <li><strong>hidden</strong> - Especifica que um elemento não é ainda, ou não é mais, relevante</li>
+                <li><strong>lang</strong> - Especifica o idioma do conteúdo do elemento</li>
+                <li><strong>spellcheck</strong> - Especifica se o elemento deve ter sua ortografia e gramática verificada</li>
+                <li><strong>tabindex</strong> - Especifica a orden de tabulação de um elemento</li>
+                <li><strong>translate</strong> - Especifica se o conteúdo do elemento deve ser traduzido ou não</li>
+            </ul>
+        </div>
+        
+        <div class="content-section" id="formatting">
+            <h2>Formatação de Texto HTML</h2>
+            <p>HTML oferece diversos elementos para formatação de texto com significados especiais.</p>
+            
+            <div class="table-container">
+                <table>
+                    <tr>
+                        <th>Elemento</th>
+                        <th>Descrição</th>
+                        <th>Exemplo</th>
+                    </tr>
+                    <tr>
+                        <td>&lt;b&gt;</td>
+                        <td>Texto em negrito (apresentacional)</td>
+                        <td><b>Texto em negrito</b></td>
+                    </tr>
+                    <tr>
+                        <td>&lt;strong&gt;</td>
+                        <td>Texto importante (semântico)</td>
+                        <td><strong>Texto importante</strong></td>
+                    </tr>
+                    <tr>
+                        <td>&lt;i&gt;</td>
+                        <td>Texto em itálico (apresentacional)</td>
+                        <td><i>Texto em itálico</i></td>
+                    </tr>
+                    <tr>
+                        <td>&lt;em&gt;</td>
+                        <td>Texto enfatizado (semântico)</td>
+                        <td><em>Texto enfatizado</em></td>
+                    </tr>
+                    <tr>
+                        <td>&lt;mark&gt;</td>
+                        <td>Texto marcado/realçado</td>
+                        <td><mark>Texto marcado</mark></td>
+                    </tr>
+                    <tr>
+                        <td>&lt;small&gt;</td>
+                        <td>Texto menor</td>
+                        <td><small>Texto menor</small></td>
+                    </tr>
+                    <tr>
+                        <td>&lt;del&gt;</td>
+                        <td>Texto deletado</td>
+                        <td><del>Texto deletado</del></td>
+                    </tr>
+                    <tr>
+                        <td>&lt;ins&gt;</td>
+                        <td>Texto inserido</td>
+                        <td><ins>Texto inserido</ins></td>
+                    </tr>
+                    <tr>
+                        <td>&lt;sub&gt;</td>
+                        <td>Texto subscrito</td>
+                        <td>H<sub>2</sub>O</td>
+                    </tr>
+                    <tr>
+                        <td>&lt;sup&gt;</td>
+                        <td>Texto sobrescrito</td>
+                        <td>X<sup>2</sup></td>
+                    </tr>
+                    <tr>
+                        <td>&lt;code&gt;</td>
+                        <td>Trecho de código de computador</td>
+                        <td><code>console.log()</code></td>
+                    </tr>
+                    <tr>
+                        <td>&lt;kbd&gt;</td>
+                        <td>Entrada de teclado</td>
+                        <td><kbd>Ctrl</kbd> + <kbd>S</kbd></td>
+                    </tr>
+                    <tr>
+                        <td>&lt;samp&gt;</td>
+                        <td>Saída de amostra de um programa</td>
+                        <td><samp>Hello World</samp></td>
+                    </tr>
+                    <tr>
+                        <td>&lt;var&gt;</td>
+                        <td>Variável</td>
+                        <td><var>x</var> = 5</td>
+                    </tr>
+                    <tr>
+                        <td>&lt;pre&gt;</td>
+                        <td>Texto pré-formatado</td>
+                        <td><pre>Texto com 
+formatação
+    preservada</pre></td>
+                    </tr>
+                    <tr>
+                        <td>&lt;abbr&gt;</td>
+                        <td>Abreviação ou acrônimo</td>
+                        <td><abbr title="HyperText Markup Language">HTML</abbr></td>
+                    </tr>
+                    <tr>
+                        <td>&lt;address&gt;</td>
+                        <td>Informações de contato</td>
+                        <td><address>Autor: João Silva</address></td>
+                    </tr>
+                    <tr>
+                        <td>&lt;bdo&gt;</td>
+                        <td>Substituição bidirecional</td>
+                        <td><bdo dir="rtl">Texto invertido</bdo></td>
+                    </tr>
+                    <tr>
+                        <td>&lt;blockquote&gt;</td>
+                        <td>Seção citada de outra fonte</td>
+                        <td><blockquote>Citação longa</blockquote></td>
+                    </tr>
+                    <tr>
+                        <td>&lt;q&gt;</td>
+                        <td>Citação curta</td>
+                        <td><q>Citação curta</q></td>
+                    </tr>
+                    <tr>
+                        <td>&lt;cite&gt;</td>
+                        <td>Título de uma obra</td>
+                        <td><cite>O Livro</cite></td>
+                    </tr>
+                </table>
+            </div>
+            
+            <h3>Diferença entre Elementos Semânticos e de Apresentação</h3>
+            <p>Elementos como &lt;b&gt; e &lt;i&gt; definem apenas a aparência (negrito e itálico), enquanto &lt;strong&gt; e &lt;em&gt; indicam que o texto tem importância ou ênfase semântica.</p>
+            
+            <div class="important">
+                <p><strong>Recomendação:</strong> Prefira usar elementos semânticos (&lt;strong&gt;, &lt;em&gt;) em vez de elementos de apresentação (&lt;b&gt;, &lt;i&gt;) para melhor acessibilidade e SEO.</p>
+            </div>
+            
+            <h3>Exemplo Completo de Formatação</h3>
+            <div class="code-example">
+                <span class="tag">&lt;p&gt;</span><br>
+                &nbsp;&nbsp;Texto <span class="tag">&lt;b&gt;</span>negrito<span class="tag">&lt;/b&gt;</span> e texto <span class="tag">&lt;strong&gt;</span>importante<span class="tag">&lt;/strong&gt;</span>.<br>
+                &nbsp;&nbsp;Texto <span class="tag">&lt;i&gt;</span>itálico<span class="tag">&lt;/i&gt;</span> e texto <span class="tag">&lt;em&gt;</span>enfatizado<span class="tag">&lt;/em&gt;</span>.<br>
+                &nbsp;&nbsp;Texto <span class="tag">&lt;mark&gt;</span>marcado<span class="tag">&lt;/mark&gt;</span> e texto <span class="tag">&lt;small&gt;</span>pequeno<span class="tag">&lt;/small&gt;</span>.<br>
+                &nbsp;&nbsp;Texto <span class="tag">&lt;del&gt;</span>deletado<span class="tag">&lt;/del&gt;</span> e texto <span class="tag">&lt;ins&gt;</span>inserido<span class="tag">&lt;/ins&gt;</span>.<br>
+                &nbsp;&nbsp;Texto <span class="tag">&lt;sub&gt;</span>subscrito<span class="tag">&lt;/sub&gt;</span> e texto <span class="tag">&lt;sup&gt;</span>sobrescrito<span class="tag">&lt;/sup&gt;</span>.<br>
+                <span class="tag">&lt;/p&gt;</span>
+            </div>
+            
+            <div class="example-output">
+                <p>
+                    Texto <b>negrito</b> e texto <strong>importante</strong>.<br>
+                    Texto <i>itálico</i> e texto <em>enfatizado</em>.<br>
+                    Texto <mark>marcado</mark> e texto <small>pequeno</small>.<br>
+                    Texto <del>deletado</del> e texto <ins>inserido</ins>.<br>
+                    Texto <sub>subscrito</sub> e texto <sup>sobrescrito</sup>.
+                </p>
+            </div>
+        </div>
+        
+        <div class="content-section" id="semantic">
+            <h2>Elementos Semânticos HTML</h2>
+            <p>Elementos semânticos descrevem claramente seu significado tanto para o navegador quanto para o desenvolvedor.</p>
+            
+            <h3>Por que usar semântica?</h3>
+            <ul>
+                <li>Melhor acessibilidade - Leitores de tela podem interpretar melhor a estrutura da página</li>
+                <li>Melhor SEO - Mecanismos de busca entendem melhor o conteúdo da página</li>
+                <li>Manutenção mais fácil - Código mais legível e compreensível</li>
+                <li>Maior consistência - Padronização na estrutura do documento</li>
+            </ul>
+            
+            <h3>Elementos Semânticos Comuns</h3>
+            <div class="table-container">
+                <table>
+                    <tr>
+                        <th>Elemento</th>
+                        <th>Descrição</th>
+                    </tr>
+                    <tr>
+                        <td>&lt;header&gt;</td>
+                        <td>Cabeçalho para um documento ou seção</td>
+                    </tr>
+                    <tr>
+                        <td>&lt;nav&gt;</td>
+                        <td>Container para links de navegação</td>
+                    </tr>
+                    <tr>
+                        <td>&lt;main&gt;</td>
+                        <td>Conteúdo principal de um documento</td>
+                    </tr>
+                    <tr>
+                        <td>&lt;section&gt;</td>
+                        <td>Seção em um documento</td>
+                    </tr>
+                    <tr>
+                        <td>&lt;article&gt;</td>
+                        <td>Conteúdo independente e autocontido</td>
+                    </tr>
+                    <tr>
+                        <td>&lt;aside&gt;</td>
+                        <td>Conteúdo à parte do conteúdo principal</td>
+                    </tr>
+                    <tr>
+                        <td>&lt;footer&gt;</td>
+                        <td>Rodapé para um documento ou seção</td>
+                    </tr>
+                    <tr>
+                        <td>&lt;figure&gt;</td>
+                        <td>Container para conteúdo ilustrado</td>
+                    </tr>
+                    <tr>
+                        <td>&lt;figcaption&gt;</td>
+                        <td>Legenda para um elemento &lt;figure&gt;</td>
+                    </tr>
+                    <tr>
+                        <td>&lt;mark&gt;</td>
+                        <td>Texto marcado/realçado</td>
+                    </tr>
+                    <tr>
+                        <td>&lt;time&gt;</td>
+                        <td>Define data/hora</td>
+                    </tr>
+                    <tr>
+                        <td>&lt;details&gt;</td>
+                        <td>Detalhes adicionais que o usuário pode visualizar ou ocultar</td>
+                    </tr>
+                    <tr>
+                        <td>&lt;summary&gt;</td>
+                        <td>Legenda visível para um elemento &lt;details&gt;</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <h3>Estrutura Semântica de uma Página</h3>
+            <div class="code-example">
+                <span class="tag">&lt;body&gt;</span><br>
+                &nbsp;&nbsp;<span class="tag">&lt;header&gt;</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;h1&gt;</span>Título do Site<span class="tag">&lt;/h1&gt;</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;nav&gt;</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;ul&gt;</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;li&gt;</span><span class="tag">&lt;a</span> <span class="attribute">href</span>=<span class="value">"#"</span><span class="tag">&gt;</span>Home<span class="tag">&lt;/a&gt;</span><span class="tag">&lt;/li&gt;</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;li&gt;</span><span class="tag">&lt;a</span> <span class="attribute">href</span>=<span class="value">"#"</span><span class="tag">&gt;</span>Sobre<span class="tag">&lt;/a&gt;</span><span class="tag">&lt;/li&gt;</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;li&gt;</span><span class="tag">&lt;a</span> <span class="attribute">href</span>=<span class="value">"#"</span><span class="tag">&gt;</span>Contato<span class="tag">&lt;/a&gt;</span><span class="tag">&lt;/li&gt;</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;/ul&gt;</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;/nav&gt;</span><br>
+                &nbsp;&nbsp;<span class="tag">&lt;/header&gt;</span><br>
+                <br>
+                &nbsp;&nbsp;<span class="tag">&lt;main&gt;</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;article&gt;</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;h2&gt;</span>Título do Artigo<span class="tag">&lt;/h2&gt;</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;p&gt;</span>Conteúdo do artigo...<span class="tag">&lt;/p&gt;</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;/article&gt;</span><br>
+                <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;aside&gt;</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;h3&gt;</span>Posts Relacionados<span class="tag">&lt;/h3&gt;</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;ul&gt;</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;li&gt;</span><span class="tag">&lt;a</span> <span class="attribute">href</span>=<span class="value">"#"</span><span class="tag">&gt;</span>Post 1<span class="tag">&lt;/a&gt;</span><span class="tag">&lt;/li&gt;</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;li&gt;</span><span class="tag">&lt;a</span> <span class="attribute">href</span>=<span class="value">"#"</span><span class="tag">&gt;</span>Post 2<span class="tag">&lt;/a&gt;</span><span class="tag">&lt;/li&gt;</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;/ul&gt;</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;/aside&gt;</span><br>
+                &nbsp;&nbsp;<span class="tag">&lt;/main&gt;</span><br>
+                <br>
+                &nbsp;&nbsp;<span class="tag">&lt;footer&gt;</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;p&gt;</span>&copy; 2023 Meu Site<span class="tag">&lt;/p&gt;</span><br>
+                &nbsp;&nbsp;<span class="tag">&lt;/footer&gt;</span><br>
+                <span class="tag">&lt;/body&gt;</span>
+            </div>
+            
+            <div class="note">
+                <p><strong>Dica:</strong> Use elementos semânticos para criar uma estrutura clara e significativa para suas páginas. Isso melhora a acessibilidade, SEO e a manutenibilidade do código.</p>
+            </div>
+        </div>
+        
+        <div class="content-section" id="lists">
+            <h2>Listas HTML</h2>
+            <p>HTML oferece três tipos de listas: ordenadas, não ordenadas e de descrição.</p>
+            
+            <h3>Listas Não Ordenadas</h3>
+            <p>Uma lista não ordenada começa com a tag &lt;ul&gt;. Cada item da lista começa com a tag &lt;li&gt;.</p>
+            
+            <div class="example-box">
+                <h4>Exemplo:</h4>
+                <div class="code-example">
+                    <span class="tag">&lt;ul&gt;</span><br>
+                    &nbsp;&nbsp;<span class="tag">&lt;li&gt;</span>Café<span class="tag">&lt;/li&gt;</span><br>
+                    &nbsp;&nbsp;<span class="tag">&lt;li&gt;</span>Chá<span class="tag">&lt;/li&gt;</span><br>
+                    &nbsp;&nbsp;<span class="tag">&lt;li&gt;</span>Leite<span class="tag">&lt;/li&gt;</span><br>
+                    <span class="tag">&lt;/ul&gt;</span>
+                </div>
+                
+                <div class="example-output">
+                    <ul>
+                        <li>Café</li>
+                        <li>Chá</li>
+                        <li>Leite</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <h3>Listas Ordenadas</h3>
+            <p>Uma lista ordenada começa com a tag &lt;ol&gt;. Cada item da lista começa com a tag &lt;li&gt;.</p>
+            
+            <div class="example-box">
+                <h4>Exemplo:</h4>
+                <div class="code-example">
+                    <span class="tag">&lt;ol&gt;</span><br>
+                    &nbsp;&nbsp;<span class="tag">&lt;li&gt;</span>Café<span class="tag">&lt;/li&gt;</span><br>
+                    &nbsp;&nbsp;<span class="tag">&lt;li&gt;</span>Chá<span class="tag">&lt;/li&gt;</span><br>
+                    &nbsp;&nbsp;<span class="tag">&lt;li&gt;</span>Leite<span class="tag">&lt;/li&gt;</span><br>
+                    <span class="tag">&lt;/ol&gt;</span>
+                </div>
+                
+                <div class="example-output">
+                    <ol>
+                        <li>Café</li>
+                        <li>Chá</li>
+                        <li>Leite</li>
+                    </ol>
+                </div>
+            </div>
+            
+            <h3>Listas de Descrição</h3>
+            <p>Uma lista de descrição é uma lista de termos, com uma descrição para cada termo. A tag &lt;dl&gt; define a lista, a tag &lt;dt&gt; define o termo e a tag &lt;dd&gt; descreve o termo.</p>
+            
+            <div class="example-box">
+                <h4>Exemplo:</h4>
+                <div class="code-example">
+                    <span class="tag">&lt;dl&gt;</span><br>
+                    &nbsp;&nbsp;<span class="tag">&lt;dt&gt;</span>Café<span class="tag">&lt;/dt&gt;</span><br>
+                    &nbsp;&nbsp;<span class="tag">&lt;dd&gt;</span>- Bebida quente preta<span class="tag">&lt;/dd&gt;</span><br>
+                    &nbsp;&nbsp;<span class="tag">&lt;dt&gt;</span>Leite<span class="tag">&lt;/dt&gt;</span><br>
+                    &nbsp;&nbsp;<span class="tag">&lt;dd&gt;</span>- Bebida fria branca<span class="tag">&lt;/dd&gt;</span><br>
+                    <span class="tag">&lt;/dl&gt;</span>
+                </div>
+                
+                <div class="example-output">
+                    <dl>
+                        <dt>Café</dt>
+                        <dd>- Bebida quente preta</dd>
+                        <dt>Leite</dt>
+                        <dd>- Bebida fria branca</dd>
+                    </dl>
+                </div>
+            </div>
+            
+            <h3>Listas Aninhadas</h3>
+            <p>Listas podem ser aninhadas (listas dentro de listas):</p>
+            
+            <div class="example-box">
+                <h4>Exemplo:</h4>
+                <div class="code-example">
+                    <span class="tag">&lt;ul&gt;</span><br>
+                    &nbsp;&nbsp;<span class="tag">&lt;li&gt;</span>Café<span class="tag">&lt;/li&gt;</span><br>
+                    &nbsp;&nbsp;<span class="tag">&lt;li&gt;</span>Chá<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;ul&gt;</span><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;li&gt;</span>Chá preto<span class="tag">&lt;/li&gt;</span><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;li&gt;</span>Chá verde<span class="tag">&lt;/li&gt;</span><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;/ul&gt;</span><br>
+                    &nbsp;&nbsp;<span class="tag">&lt;/li&gt;</span><br>
+                    &nbsp;&nbsp;<span class="tag">&lt;li&gt;</span>Leite<span class="tag">&lt;/li&gt;</span><br>
+                    <span class="tag">&lt;/ul&gt;</span>
+                </div>
+                
+                <div class="example-output">
+                    <ul>
+                        <li>Café</li>
+                        <li>Chá
+                            <ul>
+                                <li>Chá preto</li>
+                                <li>Chá verde</li>
+                            </ul>
+                        </li>
+                        <li>Leite</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <h3>Atributos para Listas</h3>
+            <div class="table-container">
+                <table>
+                    <tr>
+                        <th>Atributo</th>
+                        <th>Descrição</th>
+                        <th>Exemplo</th>
+                    </tr>
+                    <tr>
+                        <td>type</td>
+                        <td>Especifica o tipo de marcador (para &lt;ul&gt;) ou numeração (para &lt;ol&gt;)</td>
+                        <td>&lt;ul type="square"&gt;</td>
+                    </tr>
+                    <tr>
+                        <td>start</td>
+                        <td>Especifica o valor inicial de uma lista ordenada</td>
+                        <td>&lt;ol start="50"&gt;</td>
+                    </tr>
+                    <tr>
+                        <td>reversed</td>
+                        <td>Especifica que a ordem da lista deve ser reversa (apenas &lt;ol&gt;)</td>
+                        <td>&lt;ol reversed&gt;</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <h3>Tipos de Marcadores para Listas Não Ordenadas</h3>
+            <ul>
+                <li><strong>disc</strong> - Marcador circular preto (padrão)</li>
+                <li><strong>circle</strong> - Marcador circular vazio</li>
+                <li><strong>square</strong> - Marcador quadrado preto</li>
+                <li><strong>none</strong> - Sem marcador</li>
+            </ul>
+            
+            <h3>Tipos de Numeração para Listas Ordenadas</h3>
+            <ul>
+                <li><strong>1</strong> - Números (padrão)</li>
+                <li><strong>A</strong> - Letras maiúsculas</li>
+                <li><strong>a</strong> - Letras minúsculas</li>
+                <li><strong>I</strong> - Algarismos romanos maiúsculos</li>
+                <li><strong>i</strong> - Algarismos romanos minúsculos</li>
+            </ul>
+            
+            <div class="note">
+                <p><strong>Nota:</strong> Embora o atributo <code>type</code> ainda seja suportado em HTML5, recomenda-se usar CSS para estilizar listas, pois o atributo type está obsoleto em HTML5.</p>
+            </div>
+        </div>
+        
+        <div class="content-section" id="tables">
+            <h2>Tabelas HTML</h2>
+            <p>Tabelas HTML permitem organizar dados em linhas e colunas.</p>
+            
+            <h3>Tabela Básica</h3>
+            <p>Uma tabela em HTML consiste em células de tabela dentro de linhas e colunas.</p>
+            
+            <div class="example-box">
+                <h4>Exemplo:</h4>
+                <div class="code-example">
+                    <span class="tag">&lt;table&gt;</span><br>
+                    &nbsp;&nbsp;<span class="tag">&lt;tr&gt;</span><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;th&gt;</span>Nome<span class="tag">&lt;/th&gt;</span><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;th&gt;</span>Idade<span class="tag">&lt;/th&gt;</span><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;th&gt;</span>Cidade<span class="tag">&lt;/th&gt;</span><br>
+                    &nbsp;&nbsp;<span class="tag">&lt;/tr&gt;</span><br>
+                    &nbsp;&nbsp;<span class="tag">&lt;tr&gt;</span><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;td&gt;</span>João<span class="tag">&lt;/td&gt;</span><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;td&gt;</span>25<span class="tag">&lt;/td&gt;</span><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;td&gt;</span>São Paulo<span class="tag">&lt;/td&gt;</span><br>
+                    &nbsp;&nbsp;<span class="tag">&lt;/tr&gt;</span><br>
+                    &nbsp;&nbsp;<span class="tag">&lt;tr&gt;</span><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;td&gt;</span>Maria<span class="tag">&lt;/td&gt;</span><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;td&gt;</span>32<span class="tag">&lt;/td&gt;</span><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;td&gt;</span>Rio de Janeiro<span class="tag">&lt;/td&gt;</span><br>
+                    &nbsp;&nbsp;<span class="tag">&lt;/tr&gt;</span><br>
+                    <span class="tag">&lt;/table&gt;</span>
+                </div>
+                
+                <div class="example-output">
+                    <table style="width: 100%; border-collapse: collapse;">
+                        <tr>
+                            <th style="border: 1px solid #ddd; padding: 8px; background-color: #2c3e50; color: white;">Nome</th>
+                            <th style="border: 1px solid #ddd; padding: 8px; background-color: #2c3e50; color: white;">Idade</th>
+                            <th style="border: 1px solid #ddd; padding: 8px; background-color: #2c3e50; color: white;">Cidade</th>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #ddd; padding: 8px;">João</td>
+                            <td style="border: 1px solid #ddd; padding: 8px;">25</td>
+                            <td style="border: 1px solid #ddd; padding: 8px;">São Paulo</td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #ddd; padding: 8px;">Maria</td>
+                            <td style="border: 1px solid #ddd; padding: 8px;">32</td>
+                            <td style="border: 1px solid #ddd; padding: 8px;">Rio de Janeiro</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            
+            <h3>Elementos de Tabela</h3>
+            <div class="table-container">
+                <table>
+                    <tr>
+                        <th>Tag</th>
+                        <th>Descrição</th>
+                    </tr>
+                    <tr>
+                        <td>&lt;table&gt;</td>
+                        <td>Define uma tabela</td>
+                    </tr>
+                    <tr>
+                        <td>&lt;tr&gt;</td>
+                        <td>Define uma linha na tabela</td>
+                    </tr>
+                    <tr>
+                        <td>&lt;th&gt;</td>
+                        <td>Define um cabeçalho de tabela</td>
+                    </tr>
+                    <tr>
+                        <td>&lt;td&gt;</td>
+                        <td>Define uma célula de tabela</td>
+                    </tr>
+                    <tr>
+                        <td>&lt;caption&gt;</td>
+                        <td>Define uma legenda para a tabela</td>
+                    </tr>
+                    <tr>
+                        <td>&lt;thead&gt;</td>
+                        <td>Agrupa o conteúdo do cabeçalho em uma tabela</td>
+                    </tr>
+                    <tr>
+                        <td>&lt;tbody&gt;</td>
+                        <td>Agrupa o conteúdo do corpo em uma tabela</td>
+                    </tr>
+                    <tr>
+                        <td>&lt;tfoot&gt;</td>
+                        <td>Agrupa o conteúdo do rodapé em uma tabela</td>
+                    </tr>
+                    <tr>
+                        <td>&lt;col&gt;</td>
+                        <td>Especifica propriedades da coluna para cada coluna</td>
+                    </tr>
+                    <tr>
+                        <td>&lt;colgroup&gt;</td>
+                        <td>Especifica um grupo de uma ou mais colunas em uma tabela</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <h3>Atributos de Tabela</h3>
+            <div class="table-container">
+                <table>
+                    <tr>
+                        <th>Atributo</th>
+                        <th>Descrição</th>
+                    </tr>
+                    <tr>
+                        <td>colspan</td>
+                        <td>Especifica o número de colunas que uma célula deve ocupar</td>
+                    </tr>
+                    <tr>
+                        <td>rowspan</td>
+                        <td>Especifica o número de linhas que uma célula deve ocupar</td>
+                    </tr>
+                    <tr>
+                        <td>scope</td>
+                        <td>Especifica se uma célula de cabeçalho é um cabeçalho para uma coluna, linha ou grupo</td>
+                    </tr>
+                    <tr>
+                        <td>headers</td>
+                        <td>Especifica uma ou mais células de cabeçalho às quais uma célula está relacionada</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <h3>Tabela com Cabeçalho, Corpo e Rodapé</h3>
+            <div class="code-example">
+                <span class="tag">&lt;table&gt;</span><br>
+                &nbsp;&nbsp;<span class="tag">&lt;caption&gt;</span>Funcionários da Empresa<span class="tag">&lt;/caption&gt;</span><br>
+                &nbsp;&nbsp;<span class="tag">&lt;thead&gt;</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;tr&gt;</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;th</span> <span class="attribute">scope</span>=<span class="value">"col"</span><span class="tag">&gt;</span>Nome<span class="tag">&lt;/th&gt;</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;th</span> <span class="attribute">scope</span>=<span class="value">"col"</span><span class="tag">&gt;</span>Departamento<span class="tag">&lt;/th&gt;</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;th</span> <span class="attribute">scope</span>=<span class="value">"col"</span><span class="tag">&gt;</span>Salário<span class="tag">&lt;/th&gt;</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;/tr&gt;</span><br>
+                &nbsp;&nbsp;<span class="tag">&lt;/thead&gt;</span><br>
+                &nbsp;&nbsp;<span class="tag">&lt;tbody&gt;</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;tr&gt;</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;td&gt;</span>João Silva<span class="tag">&lt;/td&gt;</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;td&gt;</span>TI<span class="tag">&lt;/td&gt;</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;td&gt;</span>R$ 5.000<span class="tag">&lt;/td&gt;</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;/tr&gt;</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;tr&gt;</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;td&gt;</span>Maria Santos<span class="tag">&lt;/td&gt;</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;td&gt;</span>RH<span class="tag">&lt;/td&gt;</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;td&gt;</span>R$ 4.500<span class="tag">&lt;/td&gt;</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;/tr&gt;</span><br>
+                &nbsp;&nbsp;<span class="tag">&lt;/tbody&gt;</span><br>
+                &nbsp;&nbsp;<span class="tag">&lt;tfoot&gt;</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;tr&gt;</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;td</span> <span class="attribute">colspan</span>=<span class="value">"2"</span><span class="tag">&gt;</span>Total<span class="tag">&lt;/td&gt;</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;td&gt;</span>R$ 9.500<span class="tag">&lt;/td&gt;</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;/tr&gt;</span><br>
+                &nbsp;&nbsp;<span class="tag">&lt;/tfoot&gt;</span><br>
+                <span class="tag">&lt;/table&gt;</span>
+            </div>
+            
+            <div class="important">
+                <p><strong>Importante:</strong> Use elementos semânticos como &lt;thead&gt;, &lt;tbody&gt; e &lt;tfoot&gt; para melhorar a acessibilidade e facilitar a estilização das tabelas.</p>
+            </div>
+        </div>
+        
+        <div class="content-section" id="forms">
+            <h2>Formulários HTML</h2>
+            <p>Formulários HTML são usados para coletar entrada do usuário. A entrada do usuário é geralmente enviada para um servidor para processamento.</p>
+            
+            <h3>Elemento &lt;form&gt;</h3>
+            <p>O elemento &lt;form&gt; é um contêiner para diferentes tipos de elementos de entrada, como: campos de texto, caixas de seleção, botões de rádio, botões de envio, etc.</p>
+            
+            <div class="code-example">
+                <span class="tag">&lt;form</span> <span class="attribute">action</span>=<span class="value">"/action_page.php"</span> <span class="attribute">method</span>=<span class="value">"post"</span><span class="tag">&gt;</span><br>
+                &nbsp;&nbsp;<span class="comment">&lt;-- elementos do formulário --&gt;</span><br>
+                <span class="tag">&lt;/form&gt;</span>
+            </div>
+            
+            <h3>Elementos de Entrada</h3>
+            <p>O elemento &lt;input&gt; é o elemento de formulário mais importante. Pode ser exibido de várias maneiras, dependendo do atributo type.</p>
+            
+            <div class="table-container">
+                <table>
+                    <tr>
+                        <th>Tipo</th>
+                        <th>Descrição</th>
+                        <th>Exemplo</th>
+                    </tr>
+                    <tr>
+                        <td>text</td>
+                        <td>Campo de texto de linha única</td>
+                        <td>&lt;input type="text"&gt;</td>
+                    </tr>
+                    <tr>
+                        <td>password</td>
+                        <td>Campo de senha (os caracteres são mascarados)</td>
+                        <td>&lt;input type="password"&gt;</td>
+                    </tr>
+                    <tr>
+                        <td>submit</td>
+                        <td>Botão para enviar o formulário</td>
+                        <td>&lt;input type="submit"&gt;</td>
+                    </tr>
+                    <tr>
+                        <td>reset</td>
+                        <td>Botão para redefinir o formulário</td>
+                        <td>&lt;input type="reset"&gt;</td>
+                    </tr>
+                    <tr>
+                        <td>radio</td>
+                        <td>Botão de opção (seleção única)</td>
+                        <td>&lt;input type="radio"&gt;</td>
+                    </tr>
+                    <tr>
+                        <td>checkbox</td>
+                        <td>Caixa de seleção (múltipla seleção)</td>
+                        <td>&lt;input type="checkbox"&gt;</td>
+                    </tr>
+                    <tr>
+                        <td>button</td>
+                        <td>Botão clicável</td>
+                        <td>&lt;input type="button"&gt;</td>
+                    </tr>
+                    <tr>
+                        <td>file</td>
+                        <td>Campo para seleção de arquivo</td>
+                        <td>&lt;input type="file"&gt;</td>
+                    </tr>
+                    <tr>
+                        <td>hidden</td>
+                        <td>Campo oculto (não exibido ao usuário)</td>
+                        <td>&lt;input type="hidden"&gt;</td>
+                    </tr>
+                    <tr>
+                        <td>email</td>
+                        <td>Campo para endereço de email (HTML5)</td>
+                        <td>&lt;input type="email"&gt;</td>
+                    </tr>
+                    <tr>
+                        <td>url</td>
+                        <td>Campo para URL (HTML5)</td>
+                        <td>&lt;input type="url"&gt;</td>
+                    </tr>
+                    <tr>
+                        <td>number</td>
+                        <td>Campo para números (HTML5)</td>
+                        <td>&lt;input type="number"&gt;</td>
+                    </tr>
+                    <tr>
+                        <td>range</td>
+                        <td>Controle deslizante para intervalo numérico (HTML5)</td>
+                        <td>&lt;input type="range"&gt;</td>
+                    </tr>
+                    <tr>
+                        <td>date</td>
+                        <td>Campo para data (HTML5)</td>
+                        <td>&lt;input type="date"&gt;</td>
+                    </tr>
+                    <tr>
+                        <td>color</td>
+                        <td>Seletor de cor (HTML5)</td>
+                        <td>&lt;input type="color"&gt;</td>
+                    </tr>
+                    <tr>
+                        <td>search</td>
+                        <td>Campo de pesquisa (HTML5)</td>
+                        <td>&lt;input type="search"&gt;</td>
+                    </tr>
+                    <tr>
+                        <td>tel</td>
+                        <td>Campo para número de telefone (HTML5)</td>
+                        <td>&lt;input type="tel"&gt;</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <h3>Outros Elementos de Formulário</h3>
+            <div class="table-container">
+                <table>
+                    <tr>
+                        <th>Elemento</th>
+                        <th>Descrição</th>
+                    </tr>
+                    <tr>
+                        <td>&lt;textarea&gt;</td>
+                        <td>Área de texto multilinha</td>
+                    </tr>
+                    <tr>
+                        <td>&lt;select&gt;</td>
+                        <td>Lista suspensa (dropdown)</td>
+                    </tr>
+                    <tr>
+                        <td>&lt;option&gt;</td>
+                        <td>Opção em uma lista suspensa</td>
+                    </tr>
+                    <tr>
+                        <td>&lt;optgroup&gt;</td>
+                        <td>Grupo de opções relacionadas em uma lista suspensa</td>
+                    </tr>
+                    <tr>
+                        <td>&lt;button&gt;</td>
+                        <td>Botão clicável</td>
+                    </tr>
+                    <tr>
+                        <td>&lt;datalist&gt;</td>
+                        <td>Especifica uma lista de opções pré-definidas para entrada</td>
+                    </tr>
+                    <tr>
+                        <td>&lt;output&gt;</td>
+                        <td>Representa o resultado de um cálculo</td>
+                    </tr>
+                    <tr>
+                        <td>&lt;fieldset&gt;</td>
+                        <td>Agrupa elementos relacionados em um formulário</td>
+                    </tr>
+                    <tr>
+                        <td>&lt;legend&gt;</td>
+                        <td>Define uma legenda para um &lt;fieldset&gt;</td>
+                    </tr>
+                    <tr>
+                        <td>&lt;label&gt;</td>
+                        <td>Define uma etiqueta para um elemento &lt;input&gt;</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <h3>Atributos de Formulário</h3>
+            <div class="table-container">
+                <table>
+                    <tr>
+                        <th>Atributo</th>
+                        <th>Descrição</th>
+                    </tr>
+                    <tr>
+                        <td>action</td>
+                        <td>Especifica para onde enviar os dados do formulário</td>
+                    </tr>
+                    <tr>
+                        <td>method</td>
+                        <td>Especifica o método HTTP a ser usado (GET ou POST)</td>
+                    </tr>
+                    <tr>
+                        <td>target</td>
+                        <td>Especifica onde exibir a resposta recebida após o envio</td>
+                    </tr>
+                    <tr>
+                        <td>autocomplete</td>
+                        <td>Especifica se o formulário deve ter autocompletar ativado ou desativado</td>
+                    </tr>
+                    <tr>
+                        <td>novalidate</td>
+                        <td>Especifica que o formulário não deve ser validado quando enviado</td>
+                    </tr>
+                    <tr>
+                        <td>enctype</td>
+                        <td>Especifica como os dados do formulário devem ser codificados ao enviar para o servidor</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <h3>Atributos de Entrada</h3>
+            <div class="table-container">
+                <table>
+                    <tr>
+                        <th>Atributo</th>
+                        <th>Descrição</th>
+                    </tr>
+                    <tr>
+                        <td>value</td>
+                        <td>Especifica o valor inicial para um campo de entrada</td>
+                    </tr>
+                    <tr>
+                        <td>readonly</td>
+                        <>
+
+<td>Especifica que um campo de entrada é somente leitura</td>
+                    </tr>
+                    <tr>
+                        <td>disabled</td>
+                        <td>Especifica que um campo de entrada deve ser desabilitado</td>
+                    </tr>
+                    <tr>
+                        <td>size</td>
+                        <td>Especifica a largura visível, em caracteres, de um campo de entrada</td>
+                    </tr>
+                    <tr>
+                        <td>maxlength</td>
+                        <td>Especifica o número máximo de caracteres permitidos em um campo de entrada</td>
+                    </tr>
+                    <tr>
+                        <td>min</td>
+                        <td>Especifica o valor mínimo para um campo de entrada</td>
+                    </tr>
+                    <tr>
+                        <td>max</td>
+                        <td>Especifica o valor máximo para um campo de entrada</td>
+                    </tr>
+                    <tr>
+                        <td>multiple</td>
+                        <td>Especifica que o usuário pode inserir mais de um valor em um campo de entrada</td>
+                    </tr>
+                    <tr>
+                        <td>pattern</td>
+                        <td>Especifica uma expressão regular com a qual o valor do campo de entrada é verificado</td>
+                    </tr>
+                    <tr>
+                        <td>placeholder</td>
+                        <td>Especifica uma dica curta que descreve o valor esperado de um campo de entrada</td>
+                    </tr>
+                    <tr>
+                        <td>required</td>
+                        <td>Especifica que um campo de entrada deve ser preenchido antes de enviar o formulário</td>
+                    </tr>
+                    <tr>
+                        <td>step</td>
+                        <td>Especifica os intervalos de números legais para um campo de entrada</td>
+                    </tr>
+                    <tr>
+                        <td>autofocus</td>
+                        <td>Especifica que um campo de entrada deve automaticamente receber foco quando a página for carregada</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <h3>Exemplo de Formulário Completo</h3>
+            <div class="code-example">
+                <span class="tag">&lt;form</span> <span class="attribute">action</span>=<span class="value">"/action_page.php"</span> <span class="attribute">method</span>=<span class="value">"post"</span><span class="tag">&gt;</span><br>
+                &nbsp;&nbsp;<span class="tag">&lt;fieldset&gt;</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;legend&gt;</span>Informações Pessoais:<span class="tag">&lt;/legend&gt;</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;label</span> <span class="attribute">for</span>=<span class="value">"fname"</span><span class="tag">&gt;</span>Nome:<span class="tag">&lt;/label&gt;</span><span class="tag">&lt;br&gt;</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;input</span> <span class="attribute">type</span>=<span class="value">"text"</span> <span class="attribute">id</span>=<span class="value">"fname"</span> <span class="attribute">name</span>=<span class="value">"fname"</span> <span class="attribute">required</span><span class="tag">&gt;</span><span class="tag">&lt;br&gt;</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;label</span> <span class="attribute">for</span>=<span class="value">"lname"</span><span class="tag">&gt;</span>Sobrenome:<span class="tag">&lt;/label&gt;</span><span class="tag">&lt;br&gt;</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;input</span> <span class="attribute">type</span>=<span class="value">"text"</span> <span class="attribute">id</span>=<span class="value">"lname"</span> <span class="attribute">name</span>=<span class="value">"lname"</span> <span class="attribute">required</span><span class="tag">&gt;</span><span class="tag">&lt;br&gt;</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;label</span> <span class="attribute">for</span>=<span class="value">"email"</span><span class="tag">&gt;</span>Email:<span class="tag">&lt;/label&gt;</span><span class="tag">&lt;br&gt;</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;input</span> <span class="attribute">type</span>=<span class="value">"email"</span> <span class="attribute">id</span>=<span class="value">"email"</span> <span class="attribute">name</span>=<span class="value">"email"</span> <span class="attribute">required</span><span class="tag">&gt;</span><span class="tag">&lt;br&gt;</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;label</span> <span class="attribute">for</span>=<span class="value">"birthday"</span><span class="tag">&gt;</span>Data de Nascimento:<span class="tag">&lt;/label&gt;</span><span class="tag">&lt;br&gt;</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;input</span> <span class="attribute">type</span>=<span class="value">"date"</span> <span class="attribute">id</span>=<span class="value">"birthday"</span> <span class="attribute">name</span>=<span class="value">"birthday"</span><span class="tag">&gt;</span><span class="tag">&lt;br&gt;</span><br>
+                &nbsp;&nbsp;<span class="tag">&lt;/fieldset&gt;</span><br>
+                <br>
+                &nbsp;&nbsp;<span class="tag">&lt;fieldset&gt;</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;legend&gt;</span>Preferências:<span class="tag">&lt;/legend&gt;</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;label</span> <span class="attribute">for</span>=<span class="value">"cars"</span><span class="tag">&gt;</span>Escolha um carro:<span class="tag">&lt;/label&gt;</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;select</span> <span class="attribute">id</span>=<span class="value">"cars"</span> <span class="attribute">name</span>=<span class="value">"cars"</span><span class="tag">&gt;</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;option</span> <span class="attribute">value</span>=<span class="value">"volvo"</span><span class="tag">&gt;</span>Volvo<span class="tag">&lt;/option&gt;</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;option</span> <span class="attribute">value</span>=<span class="value">"saab"</span><span class="tag">&gt;</span>Saab<span class="tag">&lt;/option&gt;</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;option</span> <span class="attribute">value</span>=<span class="value">"fiat"</span><span class="tag">&gt;</span>Fiat<span class="tag">&lt;/option&gt;</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;option</span> <span class="attribute">value</span>=<span class="value">"audi"</span><span class="tag">&gt;</span>Audi<span class="tag">&lt;/option&gt;</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;/select&gt;</span><span class="tag">&lt;br&gt;</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;label&gt;</span>Gênero:<span class="tag">&lt;/label&gt;</span><span class="tag">&lt;br&gt;</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;input</span> <span class="attribute">type</span>=<span class="value">"radio"</span> <span class="attribute">id</span>=<span class="value">"male"</span> <span class="attribute">name</span>=<span class="value">"gender"</span> <span class="attribute">value</span>=<span class="value">"male"</span><span class="tag">&gt;</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;label</span> <span class="attribute">for</span>=<span class="value">"male"</span><span class="tag">&gt;</span>Masculino<span class="tag">&lt;/label&gt;</span><span class="tag">&lt;br&gt;</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;input</span> <span class="attribute">type</span>=<span class="value">"radio"</span> <span class="attribute">id</span>=<span class="value">"female"</span> <span class="attribute">name</span>=<span class="value">"gender"</span> <span class="attribute">value</span>=<span class="value">"female"</span><span class="tag">&gt;</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;label</span> <span class="attribute">for</span>=<span class="value">"female"</span><span class="tag">&gt;</span>Feminino<span class="tag">&lt;/label&gt;</span><span class="tag">&lt;br&gt;</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;input</span> <span class="attribute">type</span>=<span class="value">"radio"</span> <span class="attribute">id</span>=<span class="value">"other"</span> <span class="attribute">name</span>=<span class="value">"gender"</span> <span class="attribute">value</span>=<span class="value">"other"</span><span class="tag">&gt;</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;label</span> <span class="attribute">for</span>=<span class="value">"other"</span><span class="tag">&gt;</span>Outro<span class="tag">&lt;/label&gt;</span><span class="tag">&lt;br&gt;</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;label&gt;</span>Interesses:<span class="tag">&lt;/label&gt;</span><span class="tag">&lt;br&gt;</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;input</span> <span class="attribute">type</span>=<span class="value">"checkbox"</span> <span class="attribute">id</span>=<span class="value">"vehicle1"</span> <span class="attribute">name</span>=<span class="value">"vehicle1"</span> <span class="attribute">value</span>=<span class="value">"Bike"</span><span class="tag">&gt;</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;label</span> <span class="attribute">for</span>=<span class="value">"vehicle1"</span><span class="tag">&gt;</span> Eu tenho uma bicicleta<span class="tag">&lt;/label&gt;</span><span class="tag">&lt;br&gt;</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;input</span> <span class="attribute">type</span>=<span class="value">"checkbox"</span> <span class="attribute">id</span>=<span class="value">"vehicle2"</span> <span class="attribute">name</span>=<span class="value">"vehicle2"</span> <span class="attribute">value</span>=<span class="value">"Car"</span><span class="tag">&gt;</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;label</span> <span class="attribute">for</span>=<span class="value">"vehicle2"</span><span class="tag">&gt;</span> Eu tenho um carro<span class="tag">&lt;/label&gt;</span><span class="tag">&lt;br&gt;</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;input</span> <span class="attribute">type</span>=<span class="value">"checkbox"</span> <span class="attribute">id</span>=<span class="value">"vehicle3"</span> <span class="attribute">name</span>=<span class="value">"vehicle3"</span> <span class="attribute">value</span>=<span class="value">"Boat"</span><span class="tag">&gt;</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;label</span> <span class="attribute">for</span>=<span class="value">"vehicle3"</span><span class="tag">&gt;</span> Eu tenho um barco<span class="tag">&lt;/label&gt;</span><span class="tag">&lt;br&gt;</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;label</span> <span class="attribute">for</span>=<span class="value">"message"</span><span class="tag">&gt;</span>Mensagem:<span class="tag">&lt;/label&gt;</span><span class="tag">&lt;br&gt;</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;textarea</span> <span class="attribute">id</span>=<span class="value">"message"</span> <span class="attribute">name</span>=<span class="value">"message"</span> <span class="attribute">rows</span>=<span class="value">"4"</span> <span class="attribute">cols</span>=<span class="value">"50"</span><span class="tag">&gt;</span><span class="tag">&lt;/textarea&gt;</span><span class="tag">&lt;br&gt;</span><br>
+                &nbsp;&nbsp;<span class="tag">&lt;/fieldset&gt;</span><br>
+                <br>
+                &nbsp;&nbsp;<span class="tag">&lt;input</span> <span class="attribute">type</span>=<span class="value">"submit"</span> <span class="attribute">value</span>=<span class="value">"Enviar"</span><span class="tag">&gt;</span><br>
+                &nbsp;&nbsp;<span class="tag">&lt;input</span> <span class="attribute">type</span>=<span class="value">"reset"</span> <span class="attribute">value</span>=<span class="value">"Limpar"</span><span class="tag">&gt;</span><br>
+                <span class="tag">&lt;/form&gt;</span>
+            </div>
+            
+            <div class="note">
+                <p><strong>Dica:</strong> Sempre use o elemento &lt;label&gt; para melhor acessibilidade. Associe o label ao elemento input usando o atributo for com o mesmo valor do id do input.</p>
+            </div>
+        </div>
+        
+        <div class="content-section" id="multimedia">
+            <h2>Multimídia em HTML</h2>
+            <p>HTML5 oferece suporte nativo para multimídia, como áudio, vídeo e gráficos vetoriais.</p>
+            
+            <h3>Elemento &lt;video&gt;</h3>
+            <p>O elemento &lt;video&gt; é usado para incorporar conteúdo de vídeo em um documento.</p>
+            
+            <div class="code-example">
+                <span class="tag">&lt;video</span> <span class="attribute">width</span>=<span class="value">"320"</span> <span class="attribute">height</span>=<span class="value">"240"</span> <span class="attribute">controls</span><span class="tag">&gt;</span><br>
+                &nbsp;&nbsp;<span class="tag">&lt;source</span> <span class="attribute">src</span>=<span class="value">"movie.mp4"</span> <span class="attribute">type</span>=<span class="value">"video/mp4"</span><span class="tag">&gt;</span><br>
+                &nbsp;&nbsp;<span class="tag">&lt;source</span> <span class="attribute">src</span>=<span class="value">"movie.ogg"</span> <span class="attribute">type</span>=<span class="value">"video/ogg"</span><span class="tag">&gt;</span><br>
+                &nbsp;&nbsp;Seu navegador não suporta o elemento de vídeo.<br>
+                <span class="tag">&lt;/video&gt;</span>
+            </div>
+            
+            <h3>Elemento &lt;audio&gt;</h3>
+            <p>O elemento &lt;audio&gt; é usado para incorporar conteúdo de som em um documento.</p>
+            
+            <div class="code-example">
+                <span class="tag">&lt;audio</span> <span class="attribute">controls</span><span class="tag">&gt;</span><br>
+                &nbsp;&nbsp;<span class="tag">&lt;source</span> <span class="attribute">src</span>=<span class="value">"audio.mp3"</span> <span class="attribute">type</span>=<span class="value">"audio/mpeg"</span><span class="tag">&gt;</span><br>
+                &nbsp;&nbsp;<span class="tag">&lt;source</span> <span class="attribute">src</span>=<span class="value">"audio.ogg"</span> <span class="attribute">type</span>=<span class="value">"audio/ogg"</span><span class="tag">&gt;</span><br>
+                &nbsp;&nbsp;Seu navegador não suporta o elemento de áudio.<br>
+                <span class="tag">&lt;/audio&gt;</span>
+            </div>
+            
+            <h3>Elemento &lt;picture&gt;</h3>
+            <p>O elemento &lt;picture&gt; permite especificar múltiplas fontes de imagem para diferentes situações.</p>
+            
+            <div class="code-example">
+                <span class="tag">&lt;picture&gt;</span><br>
+                &nbsp;&nbsp;<span class="tag">&lt;source</span> <span class="attribute">media</span>=<span class="value">"(min-width: 650px)"</span> <span class="attribute">srcset</span>=<span class="value">"img_pink_flowers.jpg"</span><span class="tag">&gt;</span><br>
+                &nbsp;&nbsp;<span class="tag">&lt;source</span> <span class="attribute">media</span>=<span class="value">"(min-width: 465px)"</span> <span class="attribute">srcset</span>=<span class="value">"img_white_flower.jpg"</span><span class="tag">&gt;</span><br>
+                &nbsp;&nbsp;<span class="tag">&lt;img</span> <span class="attribute">src</span>=<span class="value">"img_orange_flowers.jpg"</span> <span class="attribute">alt</span>=<span class="value">"Flowers"</span> <span class="attribute">style</span>=<span class="value">"width:auto;"</span><span class="tag">&gt;</span><br>
+                <span class="tag">&lt;/picture&gt;</span>
+            </div>
+            
+            <h3>Formatos de Mídia Suportados</h3>
+            <div class="table-container">
+                <table>
+                    <tr>
+                        <th>Formato</th>
+                        <th>Extensão</th>
+                        <th>Descrição</th>
+                    </tr>
+                    <tr>
+                        <td>MP4</td>
+                        <td>.mp4</td>
+                        <td>Formato de vídeo mais comum (H.264 + AAC)</td>
+                    </tr>
+                    <tr>
+                        <td>WebM</td>
+                        <td>.webm</td>
+                        <td>Formato de vídeo aberto (VP8/VP9 + Vorbis/Opus)</td>
+                    </tr>
+                    <tr>
+                        <td>Ogg</td>
+                        <td>.ogg</td>
+                        <td>Formato de vídeo aberto (Theora + Vorbis)</td>
+                    </tr>
+                    <tr>
+                        <td>MP3</td>
+                        <td>.mp3</td>
+                        <td>Formato de áudio mais comum</td>
+                    </tr>
+                    <tr>
+                        <td>WAV</td>
+                        <td>.wav</td>
+                        <td>Formato de áudio não comprimido</td>
+                    </tr>
+                    <tr>
+                        <td>Ogg</td>
+                        <td>.ogg</td>
+                        <td>Formato de áudio aberto (Vorbis)</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <h3>Atributos de Vídeo e Áudio</h3>
+            <div class="table-container">
+                <table>
+                    <tr>
+                        <th>Atributo</th>
+                        <th>Valor</th>
+                        <th>Descrição</th>
+                    </tr>
+                    <tr>
+                        <td>autoplay</td>
+                        <td>autoplay</td>
+                        <td>O áudio/vídeo começará a tocar assim que estiver pronto</td>
+                    </tr>
+                    <tr>
+                        <td>controls</td>
+                        <td>controls</td>
+                        <td>Exibe controles de reprodução (play, pausa, etc.)</td>
+                    </tr>
+                    <tr>
+                        <td>loop</td>
+                        <td>loop</td>
+                        <td>Faz o áudio/vídeo recomeçar automaticamente quando terminar</td>
+                    </tr>
+                    <tr>
+                        <td>muted</td>
+                        <td>muted</td>
+                        <td>Define que a saída de áudio deve ser silenciada</td>
+                    </tr>
+                    <tr>
+                        <td>poster</td>
+                        <td>URL</td>
+                        <td>Especifica uma imagem para ser exibida enquanto o vídeo está sendo baixado</td>
+                    </tr>
+                    <tr>
+                        <td>preload</td>
+                        <td>auto<br>metadata<br>none</td>
+                        <td>Especifica se e como o autor do vídeo acha que o vídeo deve ser carregado quando a página for carregada</td>
+                    </tr>
+                    <tr>
+                        <td>src</td>
+                        <td>URL</td>
+                        <td>Especifica a URL do arquivo de vídeo/áudio</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <h3>Incorporando Conteúdo Externo</h3>
+            <p>HTML também permite incorporar conteúdo de outras fontes usando elementos como &lt;iframe&gt;:</p>
+            
+            <div class="code-example">
+                <span class="comment">&lt;!-- Incorporar um vídeo do YouTube --&gt;</span><br>
+                <span class="tag">&lt;iframe</span> <span class="attribute">width</span>=<span class="value">"560"</span> <span class="attribute">height</span>=<span class="value">"315"</span> <span class="attribute">src</span>=<span class="value">"https://www.youtube.com/embed/VIDEO_ID"</span> <span class="attribute">frameborder</span>=<span class="value">"0"</span> <span class="attribute">allow</span>=<span class="value">"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"</span> <span class="attribute">allowfullscreen</span><span class="tag">&gt;</span><span class="tag">&lt;/iframe&gt;</span>
+            </div>
+            
+            <div class="note">
+                <p><strong>Nota:</strong> Sempre forneça conteúdo alternativo para elementos de mídia para garantir acessibilidade e compatibilidade com navegadores mais antigos.</p>
+            </div>
+        </div>
+        
+        <div class="content-section" id="graphics">
+            <h2>Gráficos em HTML</h2>
+            <p>HTML5 introduziu elementos para desenhar gráficos na web, como &lt;canvas&gt; para gráficos bitmap e &lt;svg&gt; para gráficos vetoriais.</p>
+            
+            <h3>Elemento &lt;canvas&gt;</h3>
+            <p>O elemento &lt;canvas&gt; é usado para desenhar gráficos, via script (geralmente JavaScript).</p>
+            
+            <div class="code-example">
+                <span class="tag">&lt;canvas</span> <span class="attribute">id</span>=<span class="value">"myCanvas"</span> <span class="attribute">width</span>=<span class="value">"200"</span> <span class="attribute">height</span>=<span class="value">"100"</span> <span class="attribute">style</span>=<span class="value">"border:1px solid #000000;"</span><span class="tag">&gt;</span><br>
+                &nbsp;&nbsp;Seu navegador não suporta o elemento canvas.<br>
+                <span class="tag">&lt;/canvas&gt;</span><br>
+                <br>
+                <span class="tag">&lt;script&gt;</span><br>
+                &nbsp;&nbsp;var c = document.getElementById("myCanvas");<br>
+                &nbsp;&nbsp;var ctx = c.getContext("2d");<br>
+                &nbsp;&nbsp;ctx.fillStyle = "#FF0000";<br>
+                &nbsp;&nbsp;ctx.fillRect(0, 0, 150, 75);<br>
+                <span class="tag">&lt;/script&gt;</span>
+            </div>
+            
+            <h3>Elemento &lt;svg&gt;</h3>
+            <p>SVG (Scalable Vector Graphics) define gráficos baseados em vetor para a Web usando XML.</p>
+            
+            <div class="code-example">
+                <span class="tag">&lt;svg</span> <span class="attribute">width</span>=<span class="value">"100"</span> <span class="attribute">height</span>=<span class="value">"100"</span><span class="tag">&gt;</span><br>
+                &nbsp;&nbsp;<span class="tag">&lt;circle</span> <span class="attribute">cx</span>=<span class="value">"50"</span> <span class="attribute">cy</span>=<span class="value">"50"</span> <span class="attribute">r</span>=<span class="value">"40"</span> <span class="attribute">stroke</span>=<span class="value">"green"</span> <span class="attribute">stroke-width</span>=<span class="value">"4"</span> <span class="attribute">fill</span>=<span class="value">"yellow"</span> <span class="tag">/&gt;</span><br>
+                <span class="tag">&lt;/svg&gt;</span>
+            </div>
+            
+            <h3>Diferenças entre Canvas e SVG</h3>
+            <div class="table-container">
+                <table>
+                    <tr>
+                        <th>Canvas</th>
+                        <th>SVG</th>
+                    </tr>
+                    <tr>
+                        <td>Baseado em pixels (bitmap)</td>
+                        <td>Baseado em vetores (XML)</td>
+                    </tr>
+                    <tr>
+                        <td>Modificado apenas através de script</td>
+                        <td>Pode ser modificado através de script e CSS</td>
+                    </tr>
+                    <tr>
+                        <td>Desempenho melhor para superfícies grandes</td>
+                        <td>Melhor desempenho com objetos complexos</td>
+                    </tr>
+                    <tr>
+                        <td>Não suporta eventos</td>
+                        <td>Suporta eventos</td>
+                    </tr>
+                    <tr>
+                        <td>Baixa escalabilidade</td>
+                        <td>Alta escalabilidade (sem perda de qualidade)</td>
+                    </tr>
+                    <tr>
+                        <td>Ideal para jogos e manipulação de pixels</td>
+                        <td>Ideal para aplicações com interatividade e animações</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <h3>Exemplos de Uso do Canvas</h3>
+            <div class="code-example">
+                <span class="comment">&lt;!-- Desenhando um retângulo --&gt;</span><br>
+                <span class="tag">&lt;canvas</span> <span class="attribute">id</span>=<span class="value">"myCanvas1"</span> <span class="attribute">width</span>=<span class="value">"200"</span> <span class="attribute">height</span>=<span class="value">"100"</span><span class="tag">&gt;</span><span class="tag">&lt;/canvas&gt;</span><br>
+                <span class="tag">&lt;script&gt;</span><br>
+                &nbsp;&nbsp;var canvas = document.getElementById('myCanvas1');<br>
+                &nbsp;&nbsp;var context = canvas.getContext('2d');<br>
+                &nbsp;&nbsp;context.fillStyle = 'red';<br>
+                &nbsp;&nbsp;context.fillRect(10, 10, 50, 50);<br>
+                <span class="tag">&lt;/script&gt;</span><br>
+                <br>
+                <span class="comment">&lt;!-- Desenhando um círculo --&gt;</span><br>
+                <span class="tag">&lt;canvas</span> <span class="attribute">id</span>=<span class="value">"myCanvas2"</span> <span class="attribute">width</span>=<span class="value">"200"</span> <span class="attribute">height</span>=<span class="value">"100"</span><span class="tag">&gt;</span><span class="tag">&lt;/canvas&gt;</span><br>
+                <span class="tag">&lt;script&gt;</span><br>
+                &nbsp;&nbsp;var canvas = document.getElementById('myCanvas2');<br>
+                &nbsp;&nbsp;var context = canvas.getContext('2d');<br>
+                &nbsp;&nbsp;context.beginPath();<br>
+                &nbsp;&nbsp;context.arc(50, 50, 30, 0, 2 * Math.PI);<br>
+                &nbsp;&nbsp;context.stroke();<br>
+                <span class="tag">&lt;/script&gt;</span>
+            </div>
+            
+            <h3>Exemplos de Uso do SVG</h3>
+            <div class="code-example">
+                <span class="comment">&lt;!-- Retângulo --&gt;</span><br>
+                <span class="tag">&lt;svg</span> <span class="attribute">width</span>=<span class="value">"400"</span> <span class="attribute">height</span>=<span class="value">"100"</span><span class="tag">&gt;</span><br>
+                &nbsp;&nbsp;<span class="tag">&lt;rect</span> <span class="attribute">width</span>=<span class="value">"300"</span> <span class="attribute">height</span>=<span class="value">"100"</span> <span class="attribute">style</span>=<span class="value">"fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)"</span> <span class="tag">/&gt;</span><br>
+                <span class="tag">&lt;/svg&gt;</span><br>
+                <br>
+                <span class="comment">&lt;!-- Círculo --&gt;</span><br>
+                <span class="tag">&lt;svg</span> <span class="attribute">width</span>=<span class="value">"100"</span> <span class="attribute">height</span>=<span class="value">"100"</span><span class="tag">&gt;</span><br>
+                &nbsp;&nbsp;<span class="tag">&lt;circle</span> <span class="attribute">cx</span>=<span class="value">"50"</span> <span class="attribute">cy</span>=<span class="value">"50"</span> <span class="attribute">r</span>=<span class="value">"40"</span> <span class="attribute">stroke</span>=<span class="value">"black"</span> <span class="attribute">stroke-width</span>=<span class="value">"3"</span> <span class="attribute">fill</span>=<span class="value">"red"</span> <span class="tag">/&gt;</span><br>
+                <span class="tag">&lt;/svg&gt;</span><br>
+                <br>
+                <span class="comment">&lt;!-- Texto --&gt;</span><br>
+                <span class="tag">&lt;svg</span> <span class="attribute">height</span>=<span class="value">"30"</span> <span class="attribute">width</span>=<span class="value">"200"</span><span class="tag">&gt;</span><br>
+                &nbsp;&nbsp;<span class="tag">&lt;text</span> <span class="attribute">x</span>=<span class="value">"0"</span> <span class="attribute">y</span>=<span class="value">"15"</span> <span class="attribute">fill</span>=<span class="value">"red"</span><span class="tag">&gt;</span>Texto em SVG!<span class="tag">&lt;/text&gt;</span><br>
+                <span class="tag">&lt;/svg&gt;</span>
+            </div>
+            
+            <div class="note">
+                <p><strong>Dica:</strong> Use Canvas para manipulação intensiva de pixels (como jogos) e SVG para gráficos escaláveis que precisam ser animados ou interativos.</p>
+            </div>
+        </div>
+        
+        <div class="content-section" id="apis">
+            <h2>APIs HTML</h2>
+            <p>HTML5 introduziu várias APIs JavaScript que permitem funcionalidades avançadas em navegadores.</p>
+            
+            <h3>APIs HTML5 Principais</h3>
+            <div class="table-container">
+                <table>
+                    <tr>
+                        <th>API</th>
+                        <th>Descrição</th>
+                    </tr>
+                    <tr>
+                        <td>Geolocation</td>
+                        <td>Obtém a posição geográfica do usuário</td>
+                    </tr>
+                    <tr>
+                        <td>Drag and Drop</td>
+                        <td>Permite arrastar e soltar elementos</td>
+                    </tr>
+                    <tr>
+                        <td>Web Storage</td>
+                        <td>Armazenamento de dados local (localStorage e sessionStorage)</td>
+                    </tr>
+                    <tr>
+                        <td>Web Workers</td>
+                        <td>Executa scripts em segundo plano</td>
+                    </tr>
+                    <tr>
+                        <td>SSE (Server-Sent Events)</td>
+                        <td>Recebe atualizações automáticas de um servidor</td>
+                    </tr>
+                    <tr>
+                        <td>WebSocket</td>
+                        <td>Comunicação bidirecional com o servidor</td>
+                    </tr>
+                    <tr>
+                        <td>Canvas</td>
+                        <td>Desenho gráfico em tempo real</td>
+                    </tr>
+                    <tr>
+                        <td>Audio/Video</td>
+                        <td>Controle de mídia nativa</td>
+                    </tr>
+                    <tr>
+                        <td>History</td>
+                        <td>Manipulação do histórico do navegador</td>
+                    </tr>
+                    <tr>
+                        <td>File</td>
+                        <td>Acesso a arquivos do usuário</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <h3>Exemplo de Geolocation API</h3>
+            <div class="code-example">
+                <span class="tag">&lt;button</span> <span class="attribute">onclick</span>=<span class="value">"getLocation()"</span><span class="tag">&gt;</span>Obter Localização<span class="tag">&lt;/button&gt;</span><br>
+                <span class="tag">&lt;p</span> <span class="attribute">id</span>=<span class="value">"demo"</span><span class="tag">&gt;</span><span class="tag">&lt;/p&gt;</span><br>
+                <br>
+                <span class="tag">&lt;script&gt;</span><br>
+                &nbsp;&nbsp;function getLocation() {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;if (navigator.geolocation) {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;navigator.geolocation.getCurrentPosition(showPosition);<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;} else { <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;document.getElementById("demo").innerHTML = "Geolocation is not supported by this browser.";<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                &nbsp;&nbsp;}<br>
+                <br>
+                &nbsp;&nbsp;function showPosition(position) {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;document.getElementById("demo").innerHTML = "Latitude: " + position.coords.latitude + <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;"&lt;br&gt;Longitude: " + position.coords.longitude;<br>
+                &nbsp;&nbsp;}<br>
+                <span class="tag">&lt;/script&gt;</span>
+            </div>
+            
+            <h3>Exemplo de Web Storage API</h3>
+            <div class="code-example">
+                <span class="tag">&lt;script&gt;</span><br>
+                &nbsp;&nbsp;<span class="comment">// Armazenar dados</span><br>
+                &nbsp;&nbsp;localStorage.setItem("nome", "João Silva");<br>
+                &nbsp;&nbsp;localStorage.setItem("idade", "30");<br>
+                <br>
+                &nbsp;&nbsp;<span class="comment">// Recuperar dados</span><br>
+                &nbsp;&nbsp;var nome = localStorage.getItem("nome");<br>
+                &nbsp;&nbsp;var idade = localStorage.getItem("idade");<br>
+                <br>
+                &nbsp;&nbsp;<span class="comment">// Remover item</span><br>
+                &nbsp;&nbsp;localStorage.removeItem("idade");<br>
+                <br>
+                &nbsp;&nbsp;<span class="comment">// Limpar todo o storage</span><br>
+                &nbsp;&nbsp;// localStorage.clear();<br>
+                <span class="tag">&lt;/script&gt;</span>
+            </div>
+            
+            <h3>Exemplo de Drag and Drop API</h3>
+            <div class="code-example">
+                <span class="tag">&lt;div</span> <span class="attribute">id</span>=<span class="value">"div1"</span> <span class="attribute">ondrop</span>=<span class="value">"drop(event)"</span> <span class="attribute">ondragover</span>=<span class="value">"allowDrop(event)"</span><span class="tag">&gt;</span><span class="tag">&lt;/div&gt;</span><br>
+                <span class="tag">&lt;img</span> <span class="attribute">id</span>=<span class="value">"drag1"</span> <span class="attribute">src</span>=<span class="value">"img_logo.gif"</span> <span class="attribute">draggable</span>=<span class="value">"true"</span> <span class="attribute">ondragstart</span>=<span class="value">"drag(event)"</span> <span class="attribute">width</span>=<span class="value">"336"</span> <span class="attribute">height</span>=<span class="value">"69"</span><span class="tag">&gt;</span><br>
+                <br>
+                <span class="tag">&lt;script&gt;</span><br>
+                &nbsp;&nbsp;function allowDrop(ev) {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;ev.preventDefault();<br>
+                &nbsp;&nbsp;}<br>
+                <br>
+                &nbsp;&nbsp;function drag(ev) {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;ev.dataTransfer.setData("text", ev.target.id);<br>
+                &nbsp;&nbsp;}<br>
+                <br>
+                &nbsp;&nbsp;function drop(ev) {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;ev.preventDefault();<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;var data = ev.dataTransfer.getData("text");<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;ev.target.appendChild(document.getElementById(data));<br>
+                &nbsp;&nbsp;}<br>
+                <span class="tag">&lt;/script&gt;</span>
+            </div>
+            
+            <h3>Verificação de Suporte a APIs</h3>
+            <p>Antes de usar uma API, é importante verificar se o navegador do usuário a suporta:</p>
+            
+            <div class="code-example">
+                <span class="tag">&lt;script&gt;</span><br>
+                &nbsp;&nbsp;<span class="comment">// Verificar suporte para geolocation</span><br>
+                &nbsp;&nbsp;if (navigator.geolocation) {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;// Suporta geolocation API<br>
+                &nbsp;&nbsp;} else {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;// Não suporta geolocation API<br>
+                &nbsp;&nbsp;}<br>
+                <br>
+                &nbsp;&nbsp;<span class="comment">// Verificar suporte para localStorage</span><br>
+                &nbsp;&nbsp;if (typeof(Storage) !== "undefined") {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;// Suporta Web Storage API<br>
+                &nbsp;&nbsp;} else {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;// Não suporta Web Storage API<br>
+                &nbsp;&nbsp;}<br>
+                <br>
+                &nbsp;&nbsp;<span class="comment">// Verificar suporte para canvas</span><br>
+                &nbsp;&nbsp;var canvas = document.createElement('canvas');<br>
+                &nbsp;&nbsp;if (canvas.getContext) {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;// Suporta Canvas API<br>
+                &nbsp;&nbsp;} else {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;// Não suporta Canvas API<br>
+                &nbsp;&nbsp;}<br>
+                <span class="tag">&lt;/script&gt;</span>
+            </div>
+            
+            <div class="note">
+                <p><strong>Dica:</strong> Sempre verifique o suporte do navegador antes de usar APIs HTML5 e forneça fallbacks quando necessário para melhor compatibilidade.</p>
+            </div>
+        </div>
+        
+        <div class="content-section" id="references">
+            <h2>Referências e Recursos</h2>
+            <p>Abaixo estão algumas referências e recursos úteis para aprender e aprofundar seus conhecimentos em HTML.</p>
+            
+            <h3>Documentação Oficial</h3>
+            <div class="reference-card">
+                <h4>W3Schools</h4>
+                <p>Referência completa de HTML com exemplos interativos.</p>
+                <a href="https://www.w3schools.com/html/" class="reference-link" target="_blank">Visitar W3Schools HTML</a>
+            </div>
+            
+            <div class="reference-card">
+                <h4>MDN Web Docs</h4>
+                <p>Documentação completa e detalhada sobre HTML da Mozilla.</p>
+                <a href="https://developer.mozilla.org/en-US/docs/Web/HTML" class="reference-link" target="_blank">Visitar MDN HTML</a>
+            </div>
+            
+            <div class="reference-card">
+                <h4>W3C HTML Specification</h4>
+                <p>Especificação oficial do HTML pelo World Wide Web Consortium.</p>
+                <a href="https://www.w3.org/TR/html52/" class="reference-link" target="_blank">Visitar Especificação HTML</a>
+            </div>
+            
+            <h3>Ferramentas de Desenvolvimento</h3>
+            <div class="reference-card">
+                <h4>Visual Studio Code</h4>
+                <p>Editor de código gratuito com excelente suporte para HTML.</p>
+                <a href="https://code.visualstudio.com/" class="reference-link" target="_blank">Baixar VS Code</a>
+            </div>
+            
+            <div class="reference-card">
+                <h4>CodePen</h4>
+                <p>Ambiente de desenvolvimento online para testar código HTML, CSS e JavaScript.</p>
+                <a href="https://codepen.io/" class="reference-link" target="_blank">Visitar CodePen</a>
+            </div>
+            
+            <div class="reference-card">
+                <h4>JSFiddle</h4>
+                <p>Outro ambiente online para testar e compartilhar código.</p>
+                <a href="https://jsfiddle.net/" class="reference-link" target="_blank">Visitar JSFiddle</a>
+            </div>
+            
+            <h3>Validação de Código</h3>
+            <div class="reference-card">
+                <h4>W3C Validator</h4>
+                <p>Ferramenta para validar seu código HTML e verificar erros.</p>
+                <a href="https://validator.w3.org/" class="reference-link" target="_blank">Validar HTML</a>
+            </div>
+            
+            <div class="reference-card">
+                <h4>HTMLHint</h4>
+                <p>Ferramenta de linting para HTML para ajudar a manter a qualidade do código.</p>
+                <a href="https://htmlhint.com/" class="reference-link" target="_blank">Visitar HTMLHint</a>
+            </div>
+            
+            <h3>Cursos e Tutoriais</h3>
+            <div class="reference-card">
+                <h4>freeCodeCamp</h4>
+                <p>Curso gratuito de HTML e CSS com projetos práticos.</p>
+                <a href="https://www.freecodecamp.org/learn/responsive-web-design/" class="reference-link" target="_blank">Visitar freeCodeCamp</a>
+            </div>
+            
+            <div class="reference-card">
+                <h4>Codecademy</h4>
+                <p>Curso interativo de HTML (parte gratuita disponível).</p>
+                <a href="https://www.codecademy.com/learn/learn-html" class="reference-link" target="_blank">Visitar Codecademy</a>
+            </div>
+            
+            <div class="reference-card">
+                <h4>Udemy</h4>
+                <p>Vários cursos de HTML, muitos com desconto regularmente.</p>
+                <a href="https://www.udemy.com/topic/html/" class="reference-link" target="_blank">Visitar Udemy HTML</a>
+            </div>
+            
+            <h3>Prática e Desafios</h3>
+            <div class="reference-card">
+                <h4>Frontend Mentor</h4>
+                <p>Desafios de front-end para praticar HTML, CSS e JavaScript.</p>
+                <a href="https://www.frontendmentor.io/" class="reference-link" target="_blank">Visitar Frontend Mentor</a>
+            </div>
+            
+            <div class="reference-card">
+                <h4>CSSBattle</h4>
+                <p>Desafios para testar suas habilidades em HTML e CSS.</p>
+                <a href="https://cssbattle.dev/" class="reference-link" target="_blank">Visitar CSSBattle</a>
+            </div>
+            
+            <div class="reference-card">
+                <h4>CodeWars</h4>
+                <p>Desafios de programação que incluem problemas de HTML/CSS.</p>
+                <a href="https://www.codewars.com/" class="reference-link" target="_blank">Visitar CodeWars</a>
+            </div>
+            
+            <h3>Inspiração</h3>
+            <div class="reference-card">
+                <h4>Awwwards</h4>
+                <p>Site que premia os melhores designs da web, ótimo para inspiração.</p>
+                <a href="https://www.awwwards.com/" class="reference-link" target="_blank">Visitar Awwwards</a>
+            </div>
+            
+            <div class="reference-card">
+                <h4>CodePen Projects</h4>
+                <p>Projetos criativos da comunidade CodePen para inspiração.</p>
+                <a href="https://codepen.io/projects/" class="reference-link" target="_blank">Visitar CodePen Projects</a>
+            </div>
+            
+            <div class="reference-card">
+                <h4>Dribbble</h4>
+                <p>Comunidade de designers com exemplos visuais inspiradores.</p>
+                <a href="https://dribbble.com/" class="reference-link" target="_blank">Visitar Dribbble</a>
+            </div>
+            
+            <div class="note">
+                <p><strong>Dica:</strong> A prática constante é a chave para dominar HTML. Experimente criar projetos pessoais, replicar sites existentes e participar de desafios de codificação.</p>
+            </div>
+        </div>
+        
+        <div class="content-section" id="exercises">
+            <h2>Exercícios Práticos</h2>
+            <p>Aqui estão alguns exercícios para praticar e consolidar seus conhecimentos de HTML.</p>
+            
+            <h3>Exercícios Básicos</h3>
+            <div class="exercise">
+                <h4>Exercício 1: Página Pessoal</h4>
+                <p>Crie uma página HTML simples sobre você mesmo. Inclua:</p>
+                <ul>
+                    <li>Um título com seu nome</li>
+                    <li>Uma foto ou avatar</li>
+                    <li>Uma breve biografia</li>
+                    <li>Uma lista de seus hobbies</li>
+                    <li>Informações de contato (email, redes sociais)</li>
+                </ul>
+            </div>
+            
+            <div class="exercise">
+                <h4>Exercício 2: Receita Culinária</h4>
+                <p>Crie uma página com uma receita culinária. Inclua:</p>
+                <ul>
+                    <li>Nome da receita</li>
+                    <li>Uma imagem do prato</li>
+                    <li>Lista de ingredientes (lista não ordenada)</li>
+                    <li>Modo de preparo (lista ordenada)</li>
+                    <li>Informações adicionais (tempo de preparo, rendimento)</li>
+                </ul>
+            </div>
+            
+            <div class="exercise">
+                <h4>Exercício 3: Tabela de Preços</h4>
+                <p>Crie uma tabela comparativa de preços de produtos. Inclua:</p>
+                <ul>
+                    <li>Nome do produto</li>
+                    <li>Descrição</li>
+                    <li>Preço</li>
+                    <li>Classificação (estrelas)</li>
+                    <li>Colspan/rowspan para agrupar categorias</li>
+                </ul>
+            </div>
+            
+            <h3>Exercícios Intermediários</h3>
+            <div class="exercise">
+                <h4>Exercício 4: Formulário de Contato</h4>
+                <p>Crie um formulário de contato completo. Inclua:</p>
+                <ul>
+                    <li>Campos para nome, email e telefone</li>
+                    <li>Menu suspenso para assunto</li>
+                    <li>Área de texto para mensagem</li>
+                    <li>Checkbox para newsletter</li>
+                    <li>Botões de enviar e limpar</li>
+                    <li>Validação básica com atributos HTML5</li>
+                </ul>
+            </div>
+            
+            <div class="exercise">
+                <h4>Exercício 5: Página de Produto</h4>
+                <p>Crie uma página de detalhes de produto para uma loja online. Inclua:</p>
+                <ul>
+                    <li>Imagens do produto (use picture para responsividade)</li>
+                    <li>Nome e descrição do produto</li>
+                    <li>Preço e opções de compra</li>
+                    <li>Características em lista</li>
+                    <li>Avaliações de clientes</li>
+                    <li>Produtos relacionados</li>
+                </ul>
+            </div>
+            
+            <div class="exercise">
+                <h4>Exercício 6: Artigo com Semântica</h4>
+                <p>Crie um artigo longo usando elementos semânticos. Inclua:</p>
+                <ul>
+                    <li>Cabeçalho com título e informações do autor</li>
+                    <li>Seções e artigos aninhados</li>
+                    <li>Barra lateral com conteúdo relacionado</li>
+                    <li>Rodapé com informações de copyright</li>
+                    <li>Navegação entre seções</li>
+                    <li>Elementos de mídia (imagens, vídeos)</li>
+                </ul>
+            </div>
+            
+            <h3>Exercícios Avançados</h3>
+            <div class="exercise">
+                <h4>Exercício 7: Portfólio Pessoal</h4>
+                <p>Crie um site portfólio completo. Inclua:</p>
+                <ul>
+                    <li>Página inicial com introdução</li>
+                    <li>Página "Sobre mim" com trajetória</li>
+                    <li>Página de projetos com galeria</li>
+                    <li>Página de contato com formulário</li>
+                    <li>Navegação consistente entre páginas</li>
+                    <li>Design responsivo (usando meta viewport)</li>
+                </ul>
+            </div>
+            
+            <div class="exercise">
+                <h4>Exercício 8: Dashboard com Tabelas</h4>
+                <p>Crie um painel administrativo com dados tabulares. Inclua:</p>
+                <ul>
+                    <li>Tabelas com thead, tbody e tfoot</li>
+                    <li>Diferentes tipos de dados (texto, números, datas)</li>
+                    <li>Formulários para filtrar e buscar dados</li>
+                    <li>Paginação de tabelas</li>
+                    <li>Gráficos usando canvas (opcional)</li>
+                </ul>
+            </div>
+            
+            <div class="exercise">
+                <h4>Exercício 9: Aplicação de Todos com Web Storage</h4>
+                <p>Crie uma aplicação de lista de tarefas (to-do) que use Web Storage. Inclua:</p>
+                <ul>
+                    <li>Formulário para adicionar novas tarefas</li>
+                    <li>Lista de tarefas com opção de marcar como concluída</li>
+                    <li>Opção de excluir tarefas</li>
+                    <li>Filtros para mostrar todas, ativas ou concluídas</li>
+                    <li>Persistência dos dados usando localStorage</li>
+                    <li>Contador de tarefas pendentes</li>
+                </ul>
+            </div>
+            
+            <h3>Desafios Extras</h3>
+            <div class="exercise">
+                <h4>Desafio 1: Clone de Página</h4>
+                <p>Escolha um site popular (Google, Wikipedia, etc.) e tente recriar sua página inicial apenas com HTML. Foque na estrutura semântica e não na estilização.</p>
+            </div>
+            
+            <div class="exercise">
+                <h4>Desafio 2: Site com Acessibilidade</h4>
+                <p>Crie um site aplicando todas as melhores práticas de acessibilidade: landmarks ARIA, texto alternativo, alto contraste, navegação por teclado, etc.</p>
+            </div>
+            
+            <div class="exercise">
+                <h4>Desafio 3: Documentação Técnica</h4>
+                <p>Crie uma página de documentação técnica para uma linguagem ou ferramenta, usando elementos semânticos e organização clara de conteúdo.</p>
+            </div>
+            
+            <div class="note">
+                <p><strong>Dica:</strong> Ao realizar os exercícios, preste atenção na semântica, acessibilidade e validação do código. Use o validador do W3C para verificar seu HTML.</p>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>HTML Completo - Guia de Referência | Desenvolvimento de Sistemas Web I | Prof. Mário Melo</p>
+            <p>Baseado na documentação da W3Schools e MDN Web Docs</p>
+        </div>
+    </footer>
+
+    <script>
+        // Script para alternar entre as abas
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabs = document.querySelectorAll('.nav-tab');
+            const sections = document.querySelectorAll('.content-section');
+            
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    const target = tab.getAttribute('data-target');
+                    
+                    // Remover classe active de todas as abas e seções
+                    tabs.forEach(t => t.classList.remove('active'));
+                    sections.forEach(s => s.classList.remove('active'));
+                    
+                    // Adicionar classe active à aba e seção clicadas
+                    tab.classList.add('active');
+                    document.getElementById(target).classList.add('active');
+                });
+            });
+            
+            // Adicionar funcionalidade de copiar código
+            const codeExamples = document.querySelectorAll('.code-example');
+            codeExamples.forEach(example => {
+                example.addEventListener('click', () => {
+                    const textToCopy = example.textContent;
+                    navigator.clipboard.writeText(textToCopy).then(() => {
+                        const originalBorder = example.style.border;
+                        example.style.border = '2px solid #2ecc71';
+                        setTimeout(() => {
+                            example.style.border = originalBorder;
+                        }, 1000);
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
