@@ -77,3 +77,24 @@
 			align-items: left;
 			justify-content: left;
 		}
+
+        .aba_lateral{
+            background-color: gray;
+            text-align: center;
+            box-shadow: 2px 2px 2px black;
+            position: absolute;
+            margin-left: 65%;
+            margin-top: -27%;
+            display: flex;
+            flex-direction: column;
+            align-items: right;
+            justify-content: right;
+            border-radius: 15px;
+        }
+
+        .producoes{
+            font-size: 20px !important;
+            font-family: tahoma !important;
+            color: yellow !important;
+            text-align: justify !important;
+        }
