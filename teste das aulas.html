@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+
+<head>
+
+	<title>Site de Thiago Rafael</title>
+
+<link rel="stylesheet" href="./css/Ui.css">
+
+</head>
+
+<body>
+	<div class="meutitulo">
+
+		<div class="menu">
+			<div class="perfil">
+				<img src="img/1763489470335.jpg" width="50px" height="50px" alt="Foto de perfil">
+				<h2><b>Thiago Rafael</b>
+				</h2>
+			</div>
+			<div class="contatos">
+				<h6>
+					Desenvolvedor de Software, Designer e Escritor Editorial<br>
+					Contato:<a href="mailto:tiagovicente804@gmail.com">tiagovicente804@gmail.com</a><br>
+					whatsapp:<a href="https://wa.me/5581984487273">+55
+						81 98448-7273</a><br>
+					<a href="https://www.linkedin.com/in/thiago-rafael-470b30349/">acesse meu linkedin</a>
+				</h6>
+			</div>
+
+
+
+		</div>
+		<h1><b><u>!Bem Vindo!</u></b></h1>
+	</div>
+
+	<div class="aba_de_fundo">
+		<p><i>
+				<p>
+					Thiago Rafael é um profissional em formação que une tecnologia e criatividade para entregar
+					soluções
+					completas e
+					impactantes. Com experiência no desenvolvimento de softwares de agendamento médico, já
+					demonstrou
+					capacidade
+					de
+					transformar requisitos complexos em funcionalidades práticas e eficientes, além de contribuir
+					para a
+					melhoria contínua
+					por meio de testes e ajustes técnicos.</p>
+				<p> Sua vivência como designer e escritor editorial reforça
+					sua
+					versatilidade, tendo
+					criado identidades visuais, diagramado obras institucionais e produzido textos criativos que
+					traduzem
+					visões
+					artísticas
+					em narrativas envolventes. Domina linguagens de programação como Python e Java, além de
+					ferramentas
+					avançadas de design
+					e edição audiovisual, como Adobe Suite, Photoshop e Illustrator. Complementa suas competências
+					técnicas
+					com
+					habilidades
+					interpessoais essenciais: comunicação clara, colaboração em equipe, adaptabilidade e resolução
+					criativa
+					de
+					problemas.</p>
+				<p>
+					Thiago busca oportunidades como Jovem Aprendiz ou estagiário para aplicar seu raciocínio lógico
+					e
+					sua
+					visão
+					estética em
+					projetos inovadores, contribuindo para o crescimento das empresas e construindo um portfólio que
+					reflita
+					eficiência,
+					criatividade e impacto positivo.</p>
+
+			</i>
+		</p>
+
+	</div>
+	<div class="enviar_email">
+		<!-- cria um formulário com os campos nome e email, e um botão de enviar e outro de limpar -->
+		<form action="/action_page.php" method="post">
+			<label for="nome">Nome:</label>
+			<input type="text" id="nome" name="nome" required><br><br>
+			<!-- eu coloquei o required para que o usuário seja obrigado a preencher o campo, ou seja, ele não pode deixar o campo vazio, 
+		            e isso é importante para garantir que o formulário seja preenchido corretamente e que os dados sejam enviados de forma adequada, 
+		            ou seja, para evitar que o formulário seja enviado sem os dados necessários, e isso é importante para garantir que o formulário seja preenchido corretamente e que os 
+		            dados sejam enviados de forma adequada -->
+
+			<label for="email">Email:</label>
+			<input type="email" id="email" name="email" required><br><br>
+
+			<label for="text">Mensagem:</label><br>
+			<textarea id="text" name="text" rows="5" cols="40" required></textarea><br><br>
+
+
+			<input type="submit" value="Enviar">
+			<input type="reset" value="Limpar">
+		</form>
+		<script>
+			//evento do submit do formulário
+			document.querySelector('form').addEventListener('submit', function (e) {
+				e.preventDefault(); //previne o envio do formulário, em outras palavras, impede que a página seja recarregada ou direcionada sem querer e etc.
+				const nome = document.getElementById('nome').value;
+				const email = document.getElementById('email').value;
+				const mensagem = document.getElementById('text').value;
+				//só constaantes com os dados inseridos e enviados pelo usuário, ou seja, o nome e email que ele digitou
+				const assunto = 'Contato pelo site';
+				const corpoEmail = `Nome: ${nome}\nEmail: ${email}\nMensagem: ${mensagem}`;
+				window.location.href = `mailto:tiagovicente804@gmail.com?subject=${assunto}&body=${corpoEmail}`; //envia o e-mail com os dados inseridos pelo usuário
+				/*um problema interesante desse código, é que mesmo o email não sendo o correto ele envia a mensagem para o meu email, ou seja, o email
+				que a pessoa escreveu no campo pode não ser o email que ela vai enviar, mas a mensagem vai chegar no meu email, e o email do remetente vai ser o email do usuário, ou seja, o email que a pessoa escreveu no campo de email, e não o email do remetente, ou seja, o email do usuário, e isso pode ser um problema, porque se a pessoa escrever um email falso, ou seja, um email que não existe
+				é um pouco confuso professor mas eu tô avaliando isso, se puder seria legal se o senhor testasse isso e me explicasse uma forma melhor de fazer isso.*/
+			});
+		</script>
+	</div>
+
+</body>
+
+</html>
