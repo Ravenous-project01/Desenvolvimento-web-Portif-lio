@@ -98,3 +98,7 @@
             color: yellow !important;
             text-align: justify !important;
         }
+        a:focus{
+            -webkit-text-stroke-width: 1px;
+            -webkit-text-stroke-color: orange !important;
+        }
