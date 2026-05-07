@@ -15,8 +15,8 @@ document.addEventListener("DOMContentLoaded", () => {
 		é um pouco confuso professor mas eu tô avaliando isso, se puder seria legal se o senhor testasse isso e me explicasse uma forma melhor de fazer isso.*/
 	});
 
-	var pessoa = {name: nome}
-	var registro = [function addRegistro(){
+	var pessoa = { name: nome }
+	var registro = [function addRegistro() {
 		let _1 = 1
 	}];
 
@@ -29,4 +29,38 @@ document.addEventListener("DOMContentLoaded", () => {
 	}
 	setInterval(data_hora, 1000);
 	data_hora();
+	
+	const botao_esq = document.getElementById('para_esquerda');
+	const botao_dir = document.getElementById('para_direita');
+	const video_src = document.getElementById('video_selector');
+	const videos = {
+		_1: 'https://drive.google.com/file/d/1VpmTsa4n7SSzGPxf9dlMj4L-R2PdYinW/preview',
+		_2: 'https://drive.google.com/file/d/1IH-8kg4SN6VeCFQHETwo80x2aHaazoDe/preview',
+		_3: 'https://drive.google.com/file/d/1ogqFgmwZih7p5dYxjjUTYQHbwhVo5C5x/preview',
+		_4: 'https://drive.google.com/file/d/1LS4Ndgg-hwaIB4XaJ8vcAEQFozf02Cr2/preview',
+		_5: 'https://drive.google.com/file/d/11HRw2jij_U-HTmRizHYVHcOhiKSywn5L/preview'
+	};
+
+	botao_esq.addEventListener('click', function () {
+		for (let i = 1; i <= Object.keys(videos).length; i++) {
+			if (video_src.src === videos[`_` + i]) {
+				if (i === 1) {
+					video_src.src = videos[`_` + Object.keys(videos).length];
+				} else {
+					video_src.src = videos[`_` + (i - 1)];
+				}
+			}
+		}
+	});
+	botao_dir.addEventListener('click', function () {
+		for (let i = 1; i <= Object.keys(videos).length; i++) {
+			if (video_src.src === videos[`_` + i]) {
+				if (i === Object.keys(videos).length) {
+					video_src.src = videos[`_` + 1];
+				} else {
+					video_src.src = videos[`_` + (i + 1)];
+				}
+			}
+		}
+	});
 })
