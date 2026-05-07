@@ -9,6 +9,8 @@
 </head>
 
 <body>
+
+	<h5 id="dataEHora"></h5>
 	<div class="meutitulo">
 
 		<div class="menu">
@@ -31,7 +33,9 @@
 
 		</div>
 		<h1><b><u>!Bem Vindo!</u></b></h1>
+		
 	</div>
+
 
 	<div class="aba_de_fundo">
 		<p><i>
@@ -81,7 +85,7 @@
 
 	<div class="aba_lateral">
 		<h1 class="producoes">Minhas Produções</h3>
-		<iframe src="https://drive.google.com/file/d/1IH-8kg4SN6VeCFQHETwo80x2aHaazoDe/preview" width="640" height="480" style="border-radius: 15px;" allow="autoplay"></iframe>
+		<iframe src="https://drive.google.com/file/d/1IH-8kg4SN6VeCFQHETwo80x2aHaazoDe/preview" width="440" height="280" style="border-radius: 15px;" allow="autoplay"></iframe>
 	</div>
 
 	</div>
@@ -105,21 +109,7 @@
 			<input type="submit" value="Enviar">
 			<input type="reset" value="Limpar">
 		</form>
-		<script>
-			//evento do submit do formulário
-			document.querySelector('form').addEventListener('submit', function (e) {
-				e.preventDefault(); //previne o envio do formulário, em outras palavras, impede que a página seja recarregada ou direcionada sem querer e etc.
-				const nome = document.getElementById('nome').value;
-				const email = document.getElementById('email').value;
-				const mensagem = document.getElementById('text').value;
-				//só constaantes com os dados inseridos e enviados pelo usuário, ou seja, o nome e email que ele digitou
-				const assunto = 'Contato pelo site';
-				const corpoEmail = `Nome: ${nome}%0AEmail: ${email}%0AMensagem: ${mensagem}`;
-				window.location.href = `mailto:tiagovicente804@gmail.com?subject=${assunto}&body=${corpoEmail}`; //envia o e-mail com os dados inseridos pelo usuário
-				/*um problema interesante desse código, é que mesmo o email não sendo o correto ele envia a mensagem para o meu email, ou seja, o email
-				que a pessoa escreveu no campo pode não ser o email que ela vai enviar, mas a mensagem vai chegar no meu email, e o email do remetente vai ser o email do usuário, ou seja, o email que a pessoa escreveu no campo de email, e não o email do remetente, ou seja, o email do usuário, e isso pode ser um problema, porque se a pessoa escrever um email falso, ou seja, um email que não existe
-				é um pouco confuso professor mas eu tô avaliando isso, se puder seria legal se o senhor testasse isso e me explicasse uma forma melhor de fazer isso.*/
-			});
+		<script src="js/java.js">
 		</script>
 	</div>
 
