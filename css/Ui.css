@@ -7,7 +7,7 @@
 			color: white;
 			text-align: center;
 			font-size: 100px;
-			margin-left: 100px;
+			margin-left: 20px;
 			text-shadow: 3px 3px 5px black;
 		}
 
@@ -83,12 +83,13 @@
 			text-align: center;
 			box-shadow: 2px 2px 2px black;
 			position: absolute;
-			margin-left: 17%;
-			margin-top: 2%;
+			left: 20%;
+			margin-left: 15%;
+			margin-top: 0%;
 			display: flex;
 			flex-direction: column;
-			align-items: bottom;
-			justify-content: bottom;
+			align-items: right;
+			justify-content: right;
 			border-radius: 15px;
 		}
 
@@ -107,6 +108,8 @@
 		h5 {
 			text-align: right;
 			color: antiquewhite;
+			margin-top: 5%;
+			margin-right: 20px;
 		}
 
 		input {
