@@ -83,17 +83,18 @@
 			</i>
 		</p>
 	</div>
-	<div class="aba_lateral">
-		<div id="slider">
-			<input type="button" value="<=" id="para_esquerda" onclick="passar_slider()">
-			<input type="button" value="=>" id="para_direita" onclick="passar_slider()">
+	<div class="abas">
+		<div class="aba_lateral">
+			<div id="slider">
+				<input type="button" value="<=" id="para_esquerda" class="bt_esq">
+				<input type="button" value="=>" id="para_direita" class="bt_dir">
+			</div>
+			<h1 class="producoes">Minhas Produções</h3>
+				<iframe src="https://drive.google.com/file/d/1IH-8kg4SN6VeCFQHETwo80x2aHaazoDe/preview" width="440"
+					height="280" style="border-radius: 15px; border: solid; border-color: gray;" allow="autoplay"
+					id="video_selector"></iframe>
 		</div>
-		<h1 class="producoes">Minhas Produções</h3>
-			<iframe src="https://drive.google.com/file/d/1IH-8kg4SN6VeCFQHETwo80x2aHaazoDe/preview" width="440"
-				height="280" style="border-radius: 15px;" allow="autoplay" id="video_selector"></iframe>
 	</div>
-
-
 	<div class="enviar_email">
 		<!-- cria um formulário com os campos nome e email, e um botão de enviar e outro de limpar -->
 		<form action="/action_page.php" method="post">

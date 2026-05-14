@@ -115,7 +115,7 @@
 		input {
 			width: fit-content;
 			position: relative;
-			background-color: lightgray;
+			background-color: gray;
 			padding: 10px;
 			border-radius: 5px;
 			border: none;
@@ -130,4 +130,20 @@
 			justify-content: center;
 			width: 100%;
 			margin-bottom: 20px;
+		}
+
+		.bt_esq {
+			border: solid !important;
+			border-radius: 25px !important;
+			border-color: gold !important;
+			color: black !important;
+			background-color: yellow !important;
+		}
+
+		.bt_dir {
+			border: solid !important;
+			border-radius: 25px !important;
+			border-color: gold !important;
+			color: black !important;
+			background-color: yellow !important;
 		}

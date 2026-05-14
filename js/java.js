@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
 
+	console.log(`área do desenvolvedor`)
 	//evento do submit do formulário
 	document.querySelector('form').addEventListener('submit', function (e) {
 		e.preventDefault(); //previne o envio do formulário, em outras palavras, impede que a página seja recarregada ou direcionada sem querer e etc.
@@ -43,19 +44,27 @@ document.addEventListener("DOMContentLoaded", () => {
 	let videoList = Object.values(videos);
 	let currentIndex = 0;
 	video_src.src = videoList[currentIndex];
-	
+
 	botao_esq.addEventListener('click', function () {
 		currentIndex--;
 		if (currentIndex < 0) {
 			currentIndex = videoList.length - 1; // volta para o último vídeo
-		}
+			video_src.src = videoList[currentIndex];
+			console.log(`vídeo mudado para o %0A endereço ${video_src.src}%0A na chave ${currentIndex}`)
+		} else {
 		video_src.src = videoList[currentIndex];
+		console.log(`vídeo mudado para o %0A endereço ${video_src.src}%0A na chave ${currentIndex}`)
+		}
 	});
 	botao_dir.addEventListener('click', function () {
 		currentIndex++;
 		if (currentIndex >= videoList.length) {
 			currentIndex = 0; // volta para o primeiro vídeo
-		}
+			video_src.src = videoList[currentIndex];
+			console.log(`vídeo mudado para o %0A endereço ${video_src.src}%0A na chave ${currentIndex}`)
+		} else {
 		video_src.src = videoList[currentIndex];
+		console.log(`vídeo mudado para o \n endereço ${video_src.src}\n na chave ${currentIndex}`)
+		}
 	});
 });
