@@ -1,128 +1,170 @@
-<!DOCTYPE html>
+document.addEventListener("DOMContentLoaded", () => {
+	function printar(texto) {
+		console.log(texto);
+	}
 
-<head>
+	printar(`área do desenvolvedor`)
+	//evento do submit do formulário
+	document.querySelector('form').addEventListener('submit', function (e) {
+		e.preventDefault(); //previne o envio do formulário, em outras palavras, impede que a página seja recarregada ou direcionada sem querer e etc.
+		window.nome = document.getElementById('nome').value;
+		var email = document.getElementById('email').value;
+		const mensagem = document.getElementById('text').value;
+		//só constaantes com os dados inseridos e enviados pelo usuário, ou seja, o nome e email que ele digitou
+		const assunto = 'Contato pelo site';
+		const corpoEmail = `Nome: ${nome}%0AEmail: ${email}%0AMensagem: ${mensagem}`;
+		window.location.href = `mailto:tiagovicente804@gmail.com?subject=${assunto}&body=${corpoEmail}`; //envia o e-mail com os dados inseridos pelo usuário
+		/*um problema interesante desse código, é que mesmo o email não sendo o correto ele envia a mensagem para o meu email, ou seja, o email
+		que a pessoa escreveu no campo pode não ser o email que ela vai enviar, mas a mensagem vai chegar no meu email, e o email do remetente vai ser o email do usuário, ou seja, o email que a pessoa escreveu no campo de email, e não o email do remetente, ou seja, o email do usuário, e isso pode ser um problema, porque se a pessoa escrever um email falso, ou seja, um email que não existe
+		é um pouco confuso professor mas eu tô avaliando isso, se puder seria legal se o senhor testasse isso e me explicasse uma forma melhor de fazer isso.*/
+	});
 
-	<title>Site de Thiago Rafael</title>
+	var pessoa = { name: nome }
+	var registro = [function addRegistro() {
+		let _1 = 1
+	}];
 
-	<link rel="stylesheet" href="./css/Ui.css">
+	function data_hora() {
+		let data = new Date().toLocaleDateString();
+		let hora = new Date().toLocaleTimeString();
+		const DH = { Data: data, Hora: hora };
+		const texto = document.getElementById('dataEHora');
+		texto.innerHTML = `data: ${data} hora: ${hora}`;
+	}
+	setInterval(data_hora, 1000);
+	data_hora();
 
-</head>
+	function gerarHashCode(s) {
+		const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 
-<body>
+		let randomString = '';
 
-	<h5 id="dataEHora"></h5>
-	<div class="meutitulo">
+		for (let i = 0; i < length; i++) {
+			const randomIndex = Math.floor(Math.random() * characters.length);
+			randomString += characters.charAt(randomIndex);
+		}
 
-		<div class="menu">
-			<div class="perfil">
-				<img src="img/1763489470335.jpg" width="50px" height="50px" alt="Foto de perfil">
-				<h2><b>Thiago Rafael</b>
-				</h2>
-			</div>
-			<div class="contatos">
-				<h6>
-					Desenvolvedor de Software, Designer e Escritor Editorial<br>
-					Contato:<a href="mailto:tiagovicente804@gmail.com">tiagovicente804@gmail.com</a><br>
-					whatsapp:<a href="https://wa.me/5581984487273">+55
-						81 98448-7273</a><br>
-					<a href="https://www.linkedin.com/in/thiago-rafael-470b30349/">acesse meu linkedin</a>
-				</h6>
-			</div>
+		return randomString;
+	}
 
-
-
-		</div>
-		<h1><b><u>!Bem Vindo!</u></b></h1>
-
-	</div>
-
-
-
-	<div class="abas">
-		<div class="aba_de_fundo">
-			<p><i>
-					<p>
-						Thiago Rafael é um profissional em formação que une tecnologia e criatividade para entregar
-						soluções
-						completas e
-						impactantes. Com experiência no desenvolvimento de softwares de agendamento médico, já
-						demonstrou
-						capacidade
-						de
-						transformar requisitos complexos em funcionalidades práticas e eficientes, além de contribuir
-						para a
-						melhoria contínua
-						por meio de testes e ajustes técnicos.</p>
-					<p> Sua vivência como designer e escritor editorial reforça
-						sua
-						versatilidade, tendo
-						criado identidades visuais, diagramado obras institucionais e produzido textos criativos que
-						traduzem
-						visões
-						artísticas
-						em narrativas envolventes. Domina linguagens de programação como Python e Java, além de
-						ferramentas
-						avançadas de design
-						e edição audiovisual, como Adobe Suite, Photoshop e Illustrator. Complementa suas competências
-						técnicas
-						com
-						habilidades
-						interpessoais essenciais: comunicação clara, colaboração em equipe, adaptabilidade e resolução
-						criativa
-						de
-						problemas.</p>
-					<p>
-						Thiago busca oportunidades como Jovem Aprendiz ou estagiário para aplicar seu raciocínio lógico
-						e
-						sua
-						visão
-						estética em
-						projetos inovadores, contribuindo para o crescimento das empresas e construindo um portfólio que
-						reflita
-						eficiência,
-						criatividade e impacto positivo.</p>
-
-				</i>
-			</p>
-		</div>
-		<div class="aba_de_fundo_2">
-			
-		</div>
-	</div>
-	<div class="aba_lateral">
-		<div id="slider">
-			<input type="button" value="<=" id="para_esquerda" class="bt_esq">
-			<input type="button" value="=>" id="para_direita" class="bt_dir">
-		</div>
-		<h1 class="producoes">Minhas Produções</h3>
-			<iframe src="https://drive.google.com/file/d/1IH-8kg4SN6VeCFQHETwo80x2aHaazoDe/preview" width="440"
-				height="280" style="border-radius: 15px; border: solid; border-color: gray;" allow="autoplay"
-				id="video_selector"></iframe>
-	</div>
-	<div class="enviar_email">
-		<!-- cria um formulário com os campos nome e email, e um botão de enviar e outro de limpar -->
-		<form action="/action_page.php" method="post">
-			<label for="nome">Nome:</label>
-			<input type="text" id="nome" name="nome" required><br><br>
-			<!-- eu coloquei o required para que o usuário seja obrigado a preencher o campo, ou seja, ele não pode deixar o campo vazio, 
-		            e isso é importante para garantir que o formulário seja preenchido corretamente e que os dados sejam enviados de forma adequada, 
-		            ou seja, para evitar que o formulário seja enviado sem os dados necessários, e isso é importante para garantir que o formulário seja preenchido corretamente e que os 
-		            dados sejam enviados de forma adequada -->
-
-			<label for="email">Email:</label>
-			<input type="email" id="email" name="email" required><br><br>
-
-			<label for="text">Mensagem:</label><br>
-			<textarea id="text" name="text" rows="5" cols="40" required></textarea><br><br>
+	const MeuHash = gerarHashCode();
+	const botao_esq = document.getElementById('para_esquerda');
+	const botao_dir = document.getElementById('para_direita');
+	const video_src = document.getElementById('video_selector');
+	const lista = document.getElementById('lista_criada');
+	const videos = {
+		_1: 'https://drive.google.com/file/d/1VpmTsa4n7SSzGPxf9dlMj4L-R2PdYinW/preview',
+		_2: 'https://drive.google.com/file/d/1IH-8kg4SN6VeCFQHETwo80x2aHaazoDe/preview',
+		_3: 'https://drive.google.com/file/d/1ogqFgmwZih7p5dYxjjUTYQHbwhVo5C5x/preview',
+		_4: 'https://drive.google.com/file/d/1LS4Ndgg-hwaIB4XaJ8vcAEQFozf02Cr2/preview',
+		_5: 'https://drive.google.com/file/d/11HRw2jij_U-HTmRizHYVHcOhiKSywn5L/preview'
+	};
+	const acessos = {
+		_1: { toquen: "hastring", horario: "dataString", computador: "identificador" }
+	}
+	const chaves = Object.keys(acessos);
+	const requisitos = [];
+	let videoList = Object.values(videos);
+	let currentIndex = 0;
+	video_src.src = videoList[currentIndex];
 
 
-			<input type="submit" value="Enviar">
-			<input type="reset" value="Limpar">
-		</form>
-		<script src="js/java.js">
-		</script>
-	</div>
 
-</body>
+	function trocar_caminho() {
+		if (currentIndex < 0) {
+			currentIndex = videoList.length - 1; // volta para o último vídeo
+			video_src.src = videoList[currentIndex];
+			printar(`vídeo mudado para o %0A endereço ${video_src.src}%0A na chave ${currentIndex}`)
+		} else if (currentIndex >= videoList.length) {
+			currentIndex = 0; // volta para o primeiro vídeo
+			video_src.src = videoList[currentIndex];
+			printar(`vídeo mudado para o %0A endereço ${video_src.src}%0A na chave ${currentIndex}`)
+		} else {
+			video_src.src = videoList[currentIndex];
+			printar(`vídeo mudado para o \n endereço ${video_src.src}\n na chave ${currentIndex}`)
+		}
 
-</html>
+	}
+
+	function ler_acessos_por_toquen() {
+		for (let i = 0; i < chaves.length; i++) {
+			const chave = chaves[i];
+			const acesso = acessos[chave];
+			requisitos.push({
+				toquen: acesso.toquen,
+				horario: acesso.horario,
+				computador: acesso.computador
+			});
+		}
+
+		printar(requisitos);
+	}
+
+	function setCookie(nome, valor, dias) {
+		let data = new Date();
+		data.setTime(data.getTime() + (dias * 24 * 60 * 60 * 1000));
+		let expira = "expires=" + data.toUTCString();
+		document.cookie = nome + "=" + valor + ";" + expira + ";path=/";
+	}
+
+	function getCookie(nome) {
+		let nomeEQ = nome + "=";
+		let ca = document.cookie.split(';');
+		for (let i = 0; i < ca.length; i++) {
+			let c = ca[i].trim();
+			if (c.indexOf(nomeEQ) === 0) return c.substring(nomeEQ.length, c.length);
+		}
+		return null;
+	}
+
+	function criar_acessos_por_toquen(novoAcesso) {
+		const chaves = Object.keys(acessos);
+		let encontrado = false;
+
+		for (let i = 0; i < chaves.length; i++) {
+			const chave = chaves[i];
+			const acesso = acessos[chave];
+
+			if (acesso.horario === novoAcesso.horario &&
+				acesso.computador === novoAcesso.computador) {
+				acessos[chave].toquen = novoAcesso.toquen;
+				encontrado = true;
+				console.log(`Token atualizado na chave ${chave}`);
+				// Atualiza cookie
+				setCookie("toquen", novoAcesso.toquen, 7);
+				break;
+			}
+		}
+
+		if (!encontrado) {
+			const novaChave = `_${chaves.length + 1}`;
+			acessos[novaChave] = novoAcesso;
+			console.log(`Novo acesso adicionado na chave ${novaChave}`);
+			// Cria cookie
+			setCookie("toquen", novoAcesso.toquen, 7);
+		}
+	}
+	const tokenSalvo = getCookie("toquen");
+	printar("Token salvo no cookie:", tokenSalvo);
+	ler_acessos_por_toquen()
+
+	function identificarComputador() {
+		const userAgent = navigator.userAgent;
+		const idioma = navigator.language;
+		const resolucao = `${screen.width}x${screen.height}`;
+		return `${userAgent}-${idioma}-${resolucao}`;
+	}
+	criar_acessos_por_toquen({ toquen: `${MeuHash(`${identificarComputador}`)}`, horario: `${data_hora}`, computador: `${identificarComputador}` })
+	ler_acessos_por_toquen()
+
+	botao_esq.addEventListener('click', function () {
+		currentIndex--;
+		trocar_caminho()
+
+	});
+	botao_dir.addEventListener('click', function () {
+		currentIndex++;
+		trocar_caminho()
+
+	});
+});
