@@ -10,19 +10,12 @@ document.addEventListener("DOMContentLoaded", () => {
 		window.nome = document.getElementById('nome').value;
 		var email = document.getElementById('email').value;
 		const mensagem = document.getElementById('text').value;
-		//só constaantes com os dados inseridos e enviados pelo usuário, ou seja, o nome e email que ele digitou
+		//só constantes com os dados inseridos e enviados pelo usuário, ou seja, o nome e email que ele digitou
 		const assunto = 'Contato pelo site';
 		const corpoEmail = `Nome: ${nome}%0AEmail: ${email}%0AMensagem: ${mensagem}`;
-		window.location.href = `mailto:tiagovicente804@gmail.com?subject=${assunto}&body=${corpoEmail}`; //envia o e-mail com os dados inseridos pelo usuário
-		/*um problema interesante desse código, é que mesmo o email não sendo o correto ele envia a mensagem para o meu email, ou seja, o email
-		que a pessoa escreveu no campo pode não ser o email que ela vai enviar, mas a mensagem vai chegar no meu email, e o email do remetente vai ser o email do usuário, ou seja, o email que a pessoa escreveu no campo de email, e não o email do remetente, ou seja, o email do usuário, e isso pode ser um problema, porque se a pessoa escrever um email falso, ou seja, um email que não existe
-		é um pouco confuso professor mas eu tô avaliando isso, se puder seria legal se o senhor testasse isso e me explicasse uma forma melhor de fazer isso.*/
-	});
-
-	var pessoa = { name: nome }
-	var registro = [function addRegistro() {
-		let _1 = 1
-	}];
+		window.location.href = `mailto:tiagovicente804@gmail.com?subject=${assunto}&body=${corpoEmail}`; //envia o e-mail com os dados inseridos pelo usuári0
+		printar(f`${nome} enviou mensagem para o dev pelo email: ${email} \n mensagem: \n ${mensagem}`)
+	}); 
 
 	function data_hora() {
 		let data = new Date().toLocaleDateString();
@@ -42,7 +35,8 @@ document.addEventListener("DOMContentLoaded", () => {
 		_2: 'https://drive.google.com/file/d/1IH-8kg4SN6VeCFQHETwo80x2aHaazoDe/preview',
 		_3: 'https://drive.google.com/file/d/1ogqFgmwZih7p5dYxjjUTYQHbwhVo5C5x/preview',
 		_4: 'https://drive.google.com/file/d/1LS4Ndgg-hwaIB4XaJ8vcAEQFozf02Cr2/preview',
-		_5: 'https://drive.google.com/file/d/11HRw2jij_U-HTmRizHYVHcOhiKSywn5L/preview'
+		_5: 'https://drive.google.com/file/d/11HRw2jij_U-HTmRizHYVHcOhiKSywn5L/preview',
+		_6: 'https://drive.google.com/file/d/1IIjuZnOPCc12JNkH2gTZUOc5LMZy-N7p/preview'
 	};
 	let videoList = Object.values(videos);
 	let currentIndex = 0;
@@ -76,4 +70,6 @@ document.addEventListener("DOMContentLoaded", () => {
 		trocar_caminho()
 
 	});
+
 });
+
