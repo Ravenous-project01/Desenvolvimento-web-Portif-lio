@@ -71,5 +71,46 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	});
 
+	const habilis = document.getElementById('lista_habilis');
+	const habilidades = {
+		HTML: ['Javascript', 'CSS', 'HTML'],
+		JAVA: ['programação orientada a objetos', 'programação funcional', 'programação estruturada', 'desenvolvimento desktop'],
+		PYTHON: ['programação orientada a objetos', 'programação funcional', 'programação estruturada', 'desenvolvimento desktop', 'desenvolvimento com api-keys'],
+		Lua: ['programação básica', 'implementação multicódigo'],
+		Design: ['Photoshop', 'Illustrator', 'Figma', 'Corel Draw', 'Inkscape', 'Adobe premiere', 'capcut', 'filmora', 'DaVinci Resolve', 'canva'],
+		Escrita: ['escrita criativa', 'escrita técnica', 'escrita acadêmica', 'escrita de ficção', 'escrita de não-ficção']
+	};
+
+	const json_habilis =  JSON.parse(JSON.stringify(habilidades));
+
+	printar(json_habilis);
+
+	for (const habilidade in json_habilis) {
+		const título = document.createElement('h2');
+		título.textContent = habilidade;
+		habilis.appendChild(título);
+		const lista = document.createElement('li');
+		json_habilis[habilidade].forEach(chave => {
+			lista.textContent += `- ${chave}\n`;
+			habilis.appendChild(lista);
+		});
+	}
+	function acessos_registrar(nome, token, data) {
+
+		const json_acessos = JSON.parse(localStorage.getItem('./data.json')) || [];
+		json_acessos.push({ nome, token, data });
+		localStorage.setItem('acessos', JSON.stringify(json_acessos));
+		printar(`acesso registrado: ${nome} com o token ${token} em ${data}`);
+	}
+
+	function gerar_token() {
+		const caracteres = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+		let token = '';
+		for (let i = 0; i < 16; i++) {
+			token += caracteres.charAt(Math.floor(Math.random() * caracteres.length));
+		}
+		return token;
+	}
+	acessos_registrar("guest", gerar_token(), new Date().toLocaleString());
 });
 

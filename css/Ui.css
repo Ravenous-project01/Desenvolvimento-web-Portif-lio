@@ -13,7 +13,7 @@
 
 		h2 {
 			font-family: tahoma;
-			text-align: center;
+			text-align: left;
 			font-size: 20px;
 			margin-left: 10px;
 		}
@@ -52,8 +52,26 @@
 			padding: 20px;
 			border-radius: 10px;
 			margin-bottom: 20px;
-			width: 65%;
+			width: 45%;
+		}
 
+		.aba_de_fundo_2{
+			background-color: darkgray;
+			color: black;
+			padding: 20px;
+			border-radius: 10px;
+			margin-bottom: 20px;
+			width: 65%;
+			margin-left: 20px;
+			margin-top: -20px;
+			text-align: left !important;
+		}
+
+		.corpo{
+			display: flex;
+			flex-direction: row;
+			align-items: left;
+			justify-content: left;
 		}
 
 		.enviar_email {
@@ -61,6 +79,7 @@
 			padding: 20px;
 			border-radius: 10px;
 			margin-bottom: 20px;
+			margin-right: 20px;
 			width: fit-content;
 		}
 
@@ -97,8 +116,7 @@
 		}
 		.video-container {
 		position: relative;
-		/* Largura e altura idênticas às do seu iframe */
-		width: 440px; 
+		width: 440px;
 		height: 280px;
 		display: inline-block;
 		}
@@ -106,12 +124,11 @@
 		position: absolute;
 		top: 0;
 		right: 0;
-		/* Largura e altura da área que você quer bloquear */
-		width: 100px;  /* Cobre o canto superior direito onde fica o botão */
-		height: 60px;  /* Altura suficiente para cobrir a barra de ferramentas superior */
-		z-index: 999;  /* Garante que fique por cima do iframe */
-		background: transparent; /* Mantém invisível */
-		cursor: default; /* Remove o ponteiro de clique nesta área */
+		width: 100px;
+		height: 60px;
+		z-index: 999;
+		background: transparent;
+		cursor: default;
 		}
 		.producoes {
 			font-size: 20px !important;
@@ -166,4 +183,12 @@
 			border-color: gold !important;
 			color: black !important;
 			background-color: yellow !important;
+		}
+
+		.cintura{
+			display: flex;
+			flex-direction: row;
+			align-items: left;
+			justify-content: left;
+			width: 100%;
 		}
