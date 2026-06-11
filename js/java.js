@@ -86,12 +86,14 @@ document.addEventListener("DOMContentLoaded", () => {
 	printar(json_habilis);
 
 	for (const habilidade in json_habilis) {
-		const título = document.createElement('h2');
+		const título = document.createElement('li');
 		título.textContent = habilidade;
 		habilis.appendChild(título);
-		const lista = document.createElement('li');
+		const lista = document.createElement('ul');
 		json_habilis[habilidade].forEach(chave => {
-			lista.textContent += `- ${chave}\n`;
+      const sublista = document.createElement('li');
+      sublista.textContent = `${chave}\n`;
+			lista.appendChild(sublista)
 			habilis.appendChild(lista);
 		});
 	}
