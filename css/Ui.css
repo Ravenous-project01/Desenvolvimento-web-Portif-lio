@@ -1,0 +1,198 @@
+		body {
+			background-color: darkslategrey;
+		}
+
+		h1 {
+			font-family: tahoma;
+			color: white;
+			text-align: center;
+			font-size: 100px;
+			margin-left: 20px;
+			text-shadow: 3px 3px 5px black;
+		}
+
+		h2 {
+			font-family: tahoma;
+			text-align: left;
+			font-size: 20px;
+			margin-left: 10px;
+		}
+
+    h3 {
+      font-family: tahoma;
+      color: black;
+      text-align: left;
+      font-size: 15px;
+      margin-left: 10px;
+      margin-top: 20px;
+    }
+
+		.perfil {
+			display: flex;
+			justify-content: left;
+			align-items: left;
+		}
+
+		.menu {
+			width: fit-content;
+			height: fit-content;
+			background-color: lightgray;
+			padding: 20px;
+			border-radius: 10px;
+			margin-bottom: 20px;
+			display: flex;
+			flex-direction: column;
+			align-items: left;
+		}
+
+		img {
+			border: 4px solid darkgray;
+			border-radius: 100px;
+		}
+
+		.aba_de_fundo {
+			background-color: darkgray;
+			color: black;
+      font-size: 20px;
+			padding: 20px;
+			border-radius: 10px;
+			margin-bottom: 20px;
+			width: 45%;
+		}
+
+		.aba_de_fundo_2{
+			background-color: darkgray;
+			color: black;
+			padding: 20px;
+			border-radius: 10px;
+			margin-bottom: 20px;
+			width: 65%;
+			margin-left: 20px;
+			margin-top: -20px;
+			text-align: left !important;
+		}
+
+		.corpo{
+			display: flex;
+			flex-direction: row;
+			align-items: left;
+			justify-content: left;
+		}
+
+		.enviar_email {
+			background-color: lightgray;
+			padding: 20px;
+			border-radius: 10px;
+			margin-bottom: 20px;
+			margin-right: 20px;
+			width: fit-content;
+		}
+
+		.contatos {
+			font-family: Tahoma;
+			text-align: left !important;
+			font-size: 15x;
+			margin-left: 20px;
+			margin-top: -20px;
+		}
+
+		.meutitulo {
+			display: flex;
+			align-items: left;
+			justify-content: left;
+		}
+
+		.aba_lateral {
+			background-color: gray;
+			text-align: center;
+			box-shadow: 2px 2px 2px black;
+			position: absolute;
+			left: 1%;
+			width: 447px;
+			height: 400px;
+			margin-left: inline-block;
+			margin-bottom: 0%;
+			display: flex;
+			flex-direction: column;
+			align-items: right;
+			justify-content: center;
+			border-radius: 15px;
+
+		}
+		.video-container {
+		position: relative;
+		width: 440px;
+		height: 280px;
+		display: inline-block;
+		}
+		.bloqueio-camada {
+		position: absolute;
+		top: 0;
+		right: 0;
+		width: 100px;
+		height: 60px;
+		z-index: 999;
+		background: transparent;
+		cursor: default;
+		}
+		.producoes {
+			font-size: 20px !important;
+			font-family: tahoma !important;
+			color: yellow !important;
+			text-align: justify !important;
+		}
+
+		a:focus {
+			-webkit-text-stroke-width: 1px;
+			-webkit-text-stroke-color: orange !important;
+		}
+
+		.datahora {
+			text-align: left;
+			color: antiquewhite;
+			margin-right: 20px;
+		}
+
+		input {
+			width: fit-content;
+			position: relative;
+			background-color: gray;
+			padding: 10px;
+			border-radius: 5px;
+			border: none;
+			cursor: pointer;
+		}
+
+		.slider {
+			justify-content: space-between;
+			display: flex;
+			flex-direction: column-reverse;
+			align-items: center;
+			justify-content: center;
+			width: 100%;
+			margin-bottom: 20px;
+		}
+
+		.bt_esq {
+			border: solid !important;
+			border-radius: 25px !important;
+			border-color: gold !important;
+			color: black !important;
+			background-color: yellow !important;
+		}
+
+		.bt_dir {
+			border: solid !important;
+			border-radius: 25px !important;
+			border-color: gold !important;
+			color: black !important;
+			background-color: yellow !important;
+		}
+
+		.cintura{
+			display: flex;
+			flex-direction: row;
+			align-items: right;
+			justify-content: right;
+			width: 100%;
+		}
